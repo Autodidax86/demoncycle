@@ -49,9 +49,9 @@ public class ModWorldGen implements IWorldGenerator
 	}
 	
 private void generateSurface(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-	generateOre(ModBlocks.ORE_COPPER.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 1, 63, 4 + random.nextInt(3), 50);
-	generateCrop(ModBlocks.CROP_BLACKSTEM, world, random, chunkX * 16, chunkZ * 16, 64, 100, 1, 2);
-	generateCrop(ModBlocks.CROP_FLAX, world, random, chunkX * 16, chunkZ * 16, 64, 100, 1, 2);
+	generateOre(ModBlocks.ORE_COPPER.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 1, 63, 4 + random.nextInt(3), 30);
+	generateCrop(ModBlocks.CROP_BLACKSTEM, world, random, chunkX * 16, chunkZ * 16, 64, 100, 1, 1);
+	generateCrop(ModBlocks.CROP_FLAX, world, random, chunkX * 16, chunkZ * 16, 64, 100, 1, 1);
 	}
 
 private void generateCrop(IWorldGen crop, World world, Random random, int chunkX, int chunkZ, int minY, int maxY, int size, int chances) {
