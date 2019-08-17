@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dcm",
+  "name": "Demoncycle Mod",
+  "description": "Mod based on Peter V. Brett's demon cycle series.",
+  "version": "1.0",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Autodidax"],
+  "credits": "Me myself and I",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

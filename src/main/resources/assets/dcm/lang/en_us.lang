@@ -1,0 +1,36 @@
+# Seeds
+item.seed_blackstem.name=Blackstem Seed
+item.seed_flax.name=Flax Seed
+
+# Plants
+item.blackstem.name=Blackstem
+item.flax.name=Flax
+item.flax_fibre.name=Flax Fibre
+item.flax_woven.name=Woven Flax
+
+# Ingots
+item.ingot_copper.name=Copper Ingot
+
+# Blocks
+tile.ore_copper.name=Copper Ore
+tile.block_copper.name=Copper Block
+tile.crop_blackstem.name=Blackstem
+tile.crop_flax.name=Flax
+
+# Tools
+item.gouge_stone.name=Stone Gouge
+item.gouge_wood.name=Wooden Gouge
+item.axe_copper.name=Copper Axe
+item.hoe_copper.name=Copper Hoe
+item.pickaxe_copper.name=Copper Pickaxe
+item.shovel_copper.name=Copper Shovel
+item.sword_copper.name=Copper Sword
+
+# Armor
+item.helmet_flax_woven.name=Flax-Woven Helmet
+item.chestplate_flax_woven.name=Flax-Woven Chestplate
+item.leggings_flax_woven.name=Flax-Woven Leggings
+item.boots_flax_woven.name=Flax-Woven Boots
+
+# Food
+item.blackstem_soup.name=Blackstem Soup

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#/ ",
+        "   ",
+        "   "
+    ],
+    "key": {
+        "#": {
+            "type":"forge:ore_dict",
+            "ore":"blackstem"
+        },
+        "/": {
+            "item": "minecraft:bowl"
+        }
+    },
+    "result": {
+        "item": "dcm:blackstem_soup",
+        "count": 1
+    }
+}
