@@ -31,8 +31,6 @@ public class ModBlocks {
 	
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 	
-	//Material	
-	
 	public static final BlockCrop CROP_BLACKSTEM = new BlockCropBlackstem(); 
 	public static final BlockCrop CROP_FLAX = new BlockCropFlax();
 	public static final BlockCopper BLOCK_COPPER = new BlockCopper("block_copper");
