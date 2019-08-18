@@ -20,6 +20,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -32,6 +33,7 @@ public class EntitySandDemon extends EntityVex {
 
 	public EntitySandDemon(World worldIn) {
 		super(worldIn);
+		setGlowing(false);
 	}
 	
 	@Override
@@ -51,5 +53,36 @@ public class EntitySandDemon extends EntityVex {
 	protected ResourceLocation getLootTable() {
 		// TODO Auto-generated method stub
 		return LootTableHandler.SandDemon;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public int getBrightnessForRender() {
+		BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos(MathHelper.floor(this.posX), 0, MathHelper.floor(this.posZ));
+
+        if (this.world.isBlockLoaded(blockpos$mutableblockpos))
+        {
+            blockpos$mutableblockpos.setY(MathHelper.floor(this.posY + (double)this.getEyeHeight()));
+            return this.world.getCombinedLight(blockpos$mutableblockpos, 0);
+        }
+        else
+        {
+            return 0;
+        }
+	}
+	
+	@Override
+	public float getBrightness() {
+		BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos(MathHelper.floor(this.posX), 0, MathHelper.floor(this.posZ));
+
+        if (this.world.isBlockLoaded(blockpos$mutableblockpos))
+        {
+            blockpos$mutableblockpos.setY(MathHelper.floor(this.posY + (double)this.getEyeHeight()));
+            return this.world.getLightBrightness(blockpos$mutableblockpos);
+        }
+        else
+        {
+            return 0.0F;
+        }
 	}
 }
