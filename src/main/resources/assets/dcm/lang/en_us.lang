@@ -34,3 +34,6 @@ item.boots_flax_woven.name=Flax-Woven Boots
 
 # Food
 item.blackstem_soup.name=Blackstem Soup
+
+# Entities
+entity.sanddemon.name=Sand Demon
