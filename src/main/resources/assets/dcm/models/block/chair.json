@@ -1,0 +1,95 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+        "texture_wood": "dcm:blocks/textures/texture_wood"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Leg1",
+            "from": [ 7, -1, 7 ], 
+            "to": [ 9, 9, 9 ], 
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "x", "angle": -22.5 },
+            "faces": {
+                "north": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "east": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "south": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "west": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "up": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 2 ] },
+                "down": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Leg2",
+            "from": [ 8, -1.5, 6 ], 
+            "to": [ 10, 8.5, 8 ], 
+            "rotation": { "origin": [ 7, 8, 8 ], "axis": "z", "angle": 22.5 },
+            "faces": {
+                "north": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "east": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "south": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "west": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "up": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 2 ] },
+                "down": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Leg3",
+            "from": [ 6, -1, 6 ], 
+            "to": [ 8, 9, 8 ], 
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "z", "angle": -22.5 },
+            "faces": {
+                "north": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "east": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "south": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "west": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 10 ] },
+                "up": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 2 ] },
+                "down": { "texture": "#texture_wood", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Cube",
+            "from": [ 4, 9, 3 ], 
+            "to": [ 12, 10, 11 ], 
+            "faces": {
+                "north": { "texture": "#texture_wood", "uv": [ 0, 0, 8, 1 ] },
+                "east": { "texture": "#texture_wood", "uv": [ 0, 0, 8, 1 ] },
+                "south": { "texture": "#texture_wood", "uv": [ 0, 0, 8, 1 ] },
+                "west": { "texture": "#texture_wood", "uv": [ 0, 0, 8, 1 ] },
+                "up": { "texture": "#texture_wood", "uv": [ 0, 0, 8, 8 ] },
+                "down": { "texture": "#texture_wood", "uv": [ 0, 0, 8, 8 ] }
+            }
+        }
+    ]
+}

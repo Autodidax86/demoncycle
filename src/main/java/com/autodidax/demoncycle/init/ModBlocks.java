@@ -5,11 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.autodidax.demoncycle.blocks.BlockBase;
+import com.autodidax.demoncycle.blocks.BlockChair;
 import com.autodidax.demoncycle.blocks.BlockCopper;
 import com.autodidax.demoncycle.blocks.BlockCrop;
 import com.autodidax.demoncycle.blocks.BlockCropBlackstem;
 import com.autodidax.demoncycle.blocks.BlockCropFlax;
 import com.autodidax.demoncycle.blocks.BlockOre;
+import com.autodidax.demoncycle.blocks.BlockSpinningWheel;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
@@ -35,6 +37,8 @@ public class ModBlocks {
 	public static final BlockCrop CROP_FLAX = new BlockCropFlax();
 	public static final BlockCopper BLOCK_COPPER = new BlockCopper("block_copper");
 	public static final BlockOre ORE_COPPER = new BlockOre("ore_copper", 3f, 5f, 1);
+	public static final BlockSpinningWheel BLOCK_SPINNING_WHEEL = new BlockSpinningWheel("block_spinning_wheel");
+	//public static final BlockChair BLOCK_CHAIR = new BlockChair("block_chair"); //Buggy
 	
 	public static void init() {
 		OreDictionary.registerOre("oreCopper", ORE_COPPER);
