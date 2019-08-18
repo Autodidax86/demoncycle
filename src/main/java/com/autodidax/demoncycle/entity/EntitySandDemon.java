@@ -1,5 +1,7 @@
 package com.autodidax.demoncycle.entity;
 
+import com.autodidax.demoncycle.util.handlers.LootTableHandler;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
@@ -15,36 +17,22 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder.Spawn;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntitySandDemon extends EntityVex {
 
 	public EntitySandDemon(World worldIn) {
 		super(worldIn);
-		// TODO Auto-generated constructor stub
 	}
-	
-	@Override
-	protected SoundEvent getAmbientSound() {
-		// TODO Auto-generated method stub
-		return super.getAmbientSound();
-	}
-	
-	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-		// TODO Auto-generated method stub
-		return super.getHurtSound(damageSourceIn);
-	}
-	
-	@Override
-	protected SoundEvent getDeathSound() {
-		// TODO Auto-generated method stub
-		return super.getDeathSound();
-	}	
 	
 	@Override
 	protected void applyEntityAttributes() {
@@ -54,14 +42,14 @@ public class EntitySandDemon extends EntityVex {
 	}
 	
 	@Override
-	public float getEyeHeight() {
-		// TODO Auto-generated method stub
-		return super.getEyeHeight();
-	}
-	
-	@Override
 	protected boolean isValidLightLevel() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+	
+	@Override
+	protected ResourceLocation getLootTable() {
+		// TODO Auto-generated method stub
+		return LootTableHandler.SandDemon;
 	}
 }

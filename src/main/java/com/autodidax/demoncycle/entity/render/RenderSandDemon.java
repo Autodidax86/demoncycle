@@ -12,15 +12,22 @@ import scala.tools.nsc.backend.icode.TypeKinds.REFERENCE;
 
 public class RenderSandDemon extends RenderLiving<EntitySandDemon> {
 
-	public static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/entity/sanddemon.png");
+	public static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/entity/sand_demon.png");
+	//public static final ResourceLocation TEXTURES_NIGHT = new ResourceLocation(Reference.MOD_ID + ":textures/entity/sand_demon_night.png");
 	
 	public RenderSandDemon(RenderManager manager) {
 		super(manager, new ModelSandDemon(), 0.5f);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	protected ResourceLocation getEntityTexture(EntitySandDemon entity) {
+		
+//		if (!entity.getEntityWorld().isRemote) {
+//			if(!entity.getEntityWorld().isDaytime()) {
+//				return TEXTURES_NIGHT;
+//			}
+//		}
 		return TEXTURES;
-	}	
+	}
 }
