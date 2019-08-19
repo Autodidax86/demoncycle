@@ -14,4 +14,5 @@ public class Reference {
 	public static final String COMMON_PROXY_CLASS = "com.autodidax.demoncycle.proxy.CommonProxy";
 	
 	public static final int EntitySandDemon = 120;
+	public static final int GUI_SPINNING_WHEEL = 0;
 }

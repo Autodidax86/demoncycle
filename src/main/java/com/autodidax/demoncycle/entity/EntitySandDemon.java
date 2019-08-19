@@ -38,20 +38,17 @@ public class EntitySandDemon extends EntityVex {
 	
 	@Override
 	protected void applyEntityAttributes() {
-		// TODO Auto-generated method stub
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
 	}
 	
-	@Override
-	protected boolean isValidLightLevel() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+//	@Override
+//	protected boolean isValidLightLevel() {
+//		return true;
+//	}
 	
 	@Override
 	protected ResourceLocation getLootTable() {
-		// TODO Auto-generated method stub
 		return LootTableHandler.SandDemon;
 	}
 	

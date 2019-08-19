@@ -16,6 +16,7 @@ tile.ore_copper.name=Copper Ore
 tile.block_copper.name=Copper Block
 tile.crop_blackstem.name=Blackstem
 tile.crop_flax.name=Flax
+tile.block_spinning_wheel.name=Spinning Wheel
 
 # Tools
 item.gouge_stone.name=Stone Gouge

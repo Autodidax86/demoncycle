@@ -4,6 +4,7 @@ import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.init.ModEntities;
 import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.init.ModRecipes;
+import com.autodidax.demoncycle.init.ModTileEntities;
 import com.autodidax.demoncycle.proxy.CommonProxy;
 import com.autodidax.demoncycle.util.Reference;
 import com.autodidax.demoncycle.util.handlers.RenderHandler;

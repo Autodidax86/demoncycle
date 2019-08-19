@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.autodidax.demoncycle.blocks.BlockBase;
-import com.autodidax.demoncycle.blocks.BlockChair;
 import com.autodidax.demoncycle.blocks.BlockCopper;
 import com.autodidax.demoncycle.blocks.BlockCrop;
 import com.autodidax.demoncycle.blocks.BlockCropBlackstem;

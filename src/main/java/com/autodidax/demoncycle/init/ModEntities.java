@@ -21,15 +21,11 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-/* 
-* Most of the code in this class is copied from https://github.com/Choonster-Minecraft-Mods/TestMod3
-* Thanks to Choonster for providing this code.
-*/
 public class ModEntities 
 {
 	public static void Init() {
 		registerEntity("sanddemon", EntitySandDemon.class, Reference.EntitySandDemon, EntityCreeper.class, EnumCreatureType.MONSTER, 50, 12696440, 16767021, 
-			SpawnPlacementType.IN_AIR, getBiomes(BiomeDictionary.Type.SANDY), 100, 5, 20);
+			SpawnPlacementType.ON_GROUND, getBiomes(BiomeDictionary.Type.SANDY), 100, 10, 20);
 	}
 	
 	private static void registerEntity(String name, Class<? extends EntityLiving> entity, int id, Class<? extends EntityLiving> classToCopy, EnumCreatureType creatureType,

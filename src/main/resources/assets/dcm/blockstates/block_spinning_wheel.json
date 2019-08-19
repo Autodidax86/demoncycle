@@ -1,7 +1,18 @@
 {
-	"variants": {
-		"normal": {
-			"model": "dcm:spinning_wheel"
-		}
-	}
+    "forge_marker":1,
+    "defaults": {"model":"dcm:spinning_wheel"},
+    "variants": {
+        "normal": { "model": "dcm:spinning_wheel" },
+        "facing=north,spinning=false": { "model": "dcm:spinning_wheel" },
+        "facing=east,spinning=false": { "model": "dcm:spinning_wheel", "y": 90 },
+        "facing=south,spinning=false": { "model": "dcm:spinning_wheel", "y": 180 },
+        "facing=west,spinning=false": { "model": "dcm:spinning_wheel", "y": 270 },
+        "facing=north,spinning=true": { "model": "dcm:spinning_wheel" },
+        "facing=east,spinning=true": { "model": "dcm:spinning_wheel", "y": 90 },
+        "facing=south,spinning=true": { "model": "dcm:spinning_wheel", "y": 180 },
+        "facing=west,spinning=true": { "model": "dcm:spinning_wheel", "y": 270 },
+        "inventory": {
+            "model": "dcm:spinning_wheel"
+        }
+    }
 }
