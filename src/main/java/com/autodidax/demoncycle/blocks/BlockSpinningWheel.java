@@ -3,6 +3,7 @@ package com.autodidax.demoncycle.blocks;
 import java.util.Random;
 
 import com.autodidax.demoncycle.Main;
+import com.autodidax.demoncycle.blocks.container.BlockContainerBase;
 import com.autodidax.demoncycle.blocks.tileentities.TileEntitySpinningWheel;
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.util.Reference;
@@ -32,11 +33,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSpinningWheel extends BlockBase implements ITileEntityProvider {
+public class BlockSpinningWheel extends BlockContainerBase implements ITileEntityProvider {
 
-	//public static final AxisAlignedBB SPINNING_WHEEL_AABB = new AxisAlignedBB(0, 0, 0.25D, 0.875D, 1.25D, 0.75D);
 	public static final AxisAlignedBB SPINNING_WHEEL_NORTH_AABB = new AxisAlignedBB(1D, 0, 0.75D, 0.125D, 1.25D, 0.25D);
-	
 	public static final AxisAlignedBB SPINNING_WHEEL_WEST_AABB = new AxisAlignedBB(0.25D, 0, 0, 0.75D, 1.25D, 0.875D);
 	public static final AxisAlignedBB SPINNING_WHEEL_SOUTH_AABB = new AxisAlignedBB(0, 0, 0.25D, 0.875D, 1.25D, 0.75D);
 	public static final AxisAlignedBB SPINNING_WHEEL_EAST_AABB = new AxisAlignedBB(0.75D, 0, 0.125D, 0.25D, 1.25D, 1D);
@@ -92,7 +91,11 @@ public class BlockSpinningWheel extends BlockBase implements ITileEntityProvider
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote) {
-			playerIn.openGui(Main.Instance, Reference.GUI_SPINNING_WHEEL, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			TileEntity tileentity = worldIn.getTileEntity(pos);
+			
+			if(tileentity instanceof TileEntitySpinningWheel) {
+				playerIn.openGui(Main.Instance, Reference.GUI_SPINNING_WHEEL, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			}
 		}
 		
 		return true;

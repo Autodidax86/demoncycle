@@ -12,7 +12,8 @@ import net.minecraft.item.ItemStack;;
 public class SpinningWheelRecipes 
 {	
 	private static final SpinningWheelRecipes INSTANCE = new SpinningWheelRecipes();
-	private final Table<ItemStack, ItemStack, ItemStack> spinningList = HashBasedTable.<ItemStack, ItemStack, ItemStack>create();
+	private final Map<ItemStack, ItemStack> spinningList = Maps.<ItemStack, ItemStack>newHashMap();
+	//private final Table<ItemStack, ItemStack, ItemStack> spinningList = HashBasedTable.<ItemStack, ItemStack, ItemStack>create();
 	private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
 	
 	public static SpinningWheelRecipes getInstance()
@@ -25,28 +26,23 @@ public class SpinningWheelRecipes
 	}
 
 	
-	public void addSpinningWheelRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) 
+	public void addSpinningWheelRecipe(ItemStack input1, ItemStack result, float experience) 
 	{
-		if(getSpinningResult(input1, input2) != ItemStack.EMPTY) return;
-		this.spinningList.put(input1, input2, result);
+		if(getSpinningResult(input1) != ItemStack.EMPTY) return;
+		this.spinningList.put(input1, result);
 		this.experienceList.put(result, Float.valueOf(experience));
 	}
 	
-	public ItemStack getSpinningResult(ItemStack input1, ItemStack input2) 
+	public ItemStack getSpinningResult(ItemStack input) 
 	{
-		for(Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.spinningList.columnMap().entrySet()) 
+		for (Entry<ItemStack, ItemStack> entry : this.spinningList.entrySet()) 
 		{
-			if(this.compareItemStacks(input1, (ItemStack)entry.getKey())) 
+			if(this.compareItemStacks(input, (ItemStack)entry.getKey())) 
 			{
-				for(Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet()) 
-				{
-					if(this.compareItemStacks(input2, (ItemStack)ent.getKey())) 
-					{
-						return (ItemStack)ent.getValue();
-					}
-				}
+				return (ItemStack)entry.getValue();
 			}
 		}
+
 		return ItemStack.EMPTY;
 	}
 	
@@ -55,7 +51,7 @@ public class SpinningWheelRecipes
 		return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
 	}
 	
-	public Table<ItemStack, ItemStack, ItemStack> getSpinningList() 
+	public Map<ItemStack, ItemStack> getSpinningList() 
 	{
 		return this.spinningList;
 	}

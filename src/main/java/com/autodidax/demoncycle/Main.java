@@ -7,6 +7,7 @@ import com.autodidax.demoncycle.init.ModRecipes;
 import com.autodidax.demoncycle.init.ModTileEntities;
 import com.autodidax.demoncycle.proxy.CommonProxy;
 import com.autodidax.demoncycle.util.Reference;
+import com.autodidax.demoncycle.util.handlers.GuiHandler;
 import com.autodidax.demoncycle.util.handlers.RenderHandler;
 import com.autodidax.demoncycle.world.ModWorldGen;
 
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
@@ -42,6 +44,7 @@ public class Main {
 		ModBlocks.init();
 		ModItems.Init();
 		ModRecipes.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(Main.Instance, new GuiHandler());
 	}
 	
 	@EventHandler
