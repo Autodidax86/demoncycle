@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.blocks;
+package com.autodidax.demoncycle.block;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

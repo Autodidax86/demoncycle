@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.blocks;
+package com.autodidax.demoncycle.block;
 
 import java.util.ArrayList;
 import java.util.Arrays;

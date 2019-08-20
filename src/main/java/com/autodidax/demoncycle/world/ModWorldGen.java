@@ -5,7 +5,7 @@ import java.util.Random;
 
 import org.apache.logging.log4j.core.net.Facility;
 
-import com.autodidax.demoncycle.blocks.BlockCrop;
+import com.autodidax.demoncycle.block.BlockCrop;
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.util.IWorldGen;
 

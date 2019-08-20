@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.blocks.container;
+package com.autodidax.demoncycle.block;
 
 import com.autodidax.demoncycle.Main;
 import com.autodidax.demoncycle.init.ModBlocks;
@@ -6,18 +6,19 @@ import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.util.IHasModel;
 import com.autodidax.demoncycle.util.Reference;
 
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 
-public abstract class BlockContainerBase extends BlockContainer implements IHasModel {
+public class BlockBase extends Block implements IHasModel {
 
 	protected String name;
-	
-	protected BlockContainerBase(String name, Material material) {
+
+	public BlockBase(String name, Material material) 
+	{
 		super(material);
 
 		this.name = name;
@@ -31,15 +32,8 @@ public abstract class BlockContainerBase extends BlockContainer implements IHasM
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
 	public void registerModels() 
 	{
 		Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "Inventory");
 	}
-
 }

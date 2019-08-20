@@ -1,7 +1,7 @@
-package com.autodidax.demoncycle.blocks.Gui;
+package com.autodidax.demoncycle.gui;
 
-import com.autodidax.demoncycle.blocks.container.ContainerSpinningWheel;
-import com.autodidax.demoncycle.blocks.tileentities.TileEntitySpinningWheel;
+import com.autodidax.demoncycle.container.ContainerSpinningWheel;
+import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
 import com.autodidax.demoncycle.util.Reference;
 
 import net.minecraft.client.gui.inventory.GuiContainer;

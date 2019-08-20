@@ -1,11 +1,11 @@
-package com.autodidax.demoncycle.blocks;
+package com.autodidax.demoncycle.block;
 
 import java.util.Random;
 
 import com.autodidax.demoncycle.Main;
-import com.autodidax.demoncycle.blocks.container.BlockContainerBase;
-import com.autodidax.demoncycle.blocks.tileentities.TileEntitySpinningWheel;
+import com.autodidax.demoncycle.container.BlockContainerBase;
 import com.autodidax.demoncycle.init.ModBlocks;
+import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
 import com.autodidax.demoncycle.util.Reference;
 
 import net.minecraft.block.BlockHorizontal;

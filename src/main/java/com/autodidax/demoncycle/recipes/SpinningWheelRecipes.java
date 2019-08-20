@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.blocks.recipes;
+package com.autodidax.demoncycle.recipes;
 
 import java.util.Map;
 import java.util.Map.Entry;

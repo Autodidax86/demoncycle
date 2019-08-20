@@ -1,10 +1,10 @@
-package com.autodidax.demoncycle.blocks.tileentities;
+package com.autodidax.demoncycle.tileentities;
 
-import com.autodidax.demoncycle.blocks.BlockSpinningWheel;
-import com.autodidax.demoncycle.blocks.recipes.SpinningWheelRecipes;
+import com.autodidax.demoncycle.block.BlockSpinningWheel;
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.items.ItemBase;
+import com.autodidax.demoncycle.recipes.SpinningWheelRecipes;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;

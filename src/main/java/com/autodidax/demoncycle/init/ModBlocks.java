@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.autodidax.demoncycle.blocks.BlockBase;
-import com.autodidax.demoncycle.blocks.BlockCopper;
-import com.autodidax.demoncycle.blocks.BlockCrop;
-import com.autodidax.demoncycle.blocks.BlockCropBlackstem;
-import com.autodidax.demoncycle.blocks.BlockCropFlax;
-import com.autodidax.demoncycle.blocks.BlockOre;
-import com.autodidax.demoncycle.blocks.BlockSpinningWheel;
+import com.autodidax.demoncycle.block.BlockBase;
+import com.autodidax.demoncycle.block.BlockCopper;
+import com.autodidax.demoncycle.block.BlockCrop;
+import com.autodidax.demoncycle.block.BlockCropBlackstem;
+import com.autodidax.demoncycle.block.BlockCropFlax;
+import com.autodidax.demoncycle.block.BlockOre;
+import com.autodidax.demoncycle.block.BlockSpinningWheel;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
