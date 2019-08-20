@@ -9,14 +9,17 @@ import com.autodidax.demoncycle.items.ItemBase;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -28,12 +31,12 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 
-	private ItemStackHandler handler = new ItemStackHandler(2);
+	private ItemStackHandler spinningWheelItemStacks = new ItemStackHandler(2);
 	private String customName;
 	private ItemStack spinning = ItemStack.EMPTY;
 
-	private int processTime; //cookTime
-	private int totalProcessTime = 200; //totalCookTime
+	private int processTime; 
+	private int totalProcessTime = 200;
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
@@ -46,7 +49,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			return (T) this.handler;
+			return (T) this.spinningWheelItemStacks;
 		return super.getCapability(capability, facing);
 	}
 
@@ -67,11 +70,10 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.handler.deserializeNBT(compound.getCompoundTag("Inventory"));
+		this.spinningWheelItemStacks.deserializeNBT(compound.getCompoundTag("Inventory"));
 		this.processTime = compound.getInteger("ProcessTime");
 		this.totalProcessTime = compound.getInteger("ProcessTimeTotal");
-		//this.totalProcessTime = getItemProcessTime((ItemStack) this.handler.getStackInSlot(1));
-
+		
 		if (compound.hasKey("CustomName", 8))
 			this.setCustomName(compound.getString("CustomName"));
 	}
@@ -79,10 +81,9 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-//		compound.setInteger("BurnTime", (short) this.burnTime);
 		compound.setInteger("ProcessTime", (short) this.processTime);
 		compound.setInteger("ProcessTimeTotal", (short) this.totalProcessTime);
-		compound.setTag("Inventory", this.handler.serializeNBT());
+		compound.setTag("Inventory", this.spinningWheelItemStacks.serializeNBT());
 
 		if (this.hasCustomName())
 			compound.setString("CustomName", this.customName);
@@ -90,7 +91,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	}
 
 	public boolean isWorking() {
-		return this.processTime > 0; //this "furnace" will always work
+		return true; //this "furnace" will always work
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -98,49 +99,89 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		return te.getField(0) > 0;
 	}
 
-	public void update() 
+	public void update()
 	{
-		if (this.isWorking()) 
-		{
-			this.processTime++;
-			BlockSpinningWheel.setState(true, world, pos);
-		}
-
-		ItemStack input = handler.getStackInSlot(0);
+		boolean flag = this.isWorking();
+		boolean flag1 = false;
 		
-		if (this.isWorking() && this.canBeProcessed(input))
-		{ 
-			this.processTime++;
-			if (this.processTime >= this.totalProcessTime) //finished
+		if(!this.world.isRemote)
+		{
+			ItemStack input = this.spinningWheelItemStacks.getStackInSlot(0);
+			
+			if (this.isWorking() || !input.isEmpty())
 			{
-				if(handler.getStackInSlot(1).getCount() > 0) 
-				{
-					handler.getStackInSlot(1).grow(1);
-				}
-				else 
-				{
-					handler.insertItem(1, spinning, false);
+				if (!this.isWorking() && this.canBeProcessed(input))
+				{					
+					if(this.isWorking()) {
+						flag1 = true;
+						
+						if(!input.isEmpty()) 
+						{
+							Item item = input.getItem();
+							input.shrink(1);
+							
+							if (input.isEmpty())
+							{
+								ItemStack item1 = item.getContainerItem(input);
+								this.spinningWheelItemStacks.setStackInSlot(1, item1);
+							}
+						}
+					}
 				}
 				
-				spinning = ItemStack.EMPTY;
-				this.processTime = 0;
-				return;
+				if (this.isWorking() && this.canBeProcessed(input)) {
+					++this.processTime;
+					
+					if(this.processTime == this.totalProcessTime)
+					{
+						this.processTime = 0;
+						this.totalProcessTime = this.getItemProcessTime(input);
+						this.processItem(input);
+						flag1 = true;
+					}
+				}
+				else
+				{
+					this.processTime = 0;
+				}
+			}
+			else if (!this.isWorking() && this.processTime > 0)
+			{
+				this.processTime = MathHelper.clamp(this.processTime - 2, 0, this.totalProcessTime);
+			}
+			
+			if (flag != this.isWorking())
+			{
+				flag1 = true;
+				BlockSpinningWheel.setState(this.isWorking(), this.world, pos);
 			}
 		}
-		else if(this.canBeProcessed(input)) 
+		
+		if (flag1)
 		{
-			ItemStack output = SpinningWheelRecipes.getInstance().getSpinningResult(input);
-			if(!output.isEmpty()) {
-				spinning = output;
-				this.processTime++;
-				input.shrink(1);
-				handler.setStackInSlot(0, input);
-			}
-		}
-		else {
-			this.processTime = 0;
+			this.markDirty();
 		}
 	}
+	
+	public void processItem(ItemStack input)
+    {
+        if (this.canBeProcessed(input))
+        {
+            ItemStack resultItem = SpinningWheelRecipes.getInstance().getSpinningResult(input);
+            ItemStack output = this.spinningWheelItemStacks.getStackInSlot(1); //output
+
+            if (output.isEmpty())
+            {
+                this.spinningWheelItemStacks.setStackInSlot(1, resultItem.copy());
+            }
+            else if (output.getItem() == resultItem.getItem())
+            {
+            	output.grow(resultItem.getCount());
+            }
+
+            input.shrink(1);
+        }
+    }
 
 	private boolean canBeProcessed(ItemStack item) {
 		if (item.isEmpty())
@@ -155,7 +196,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 			}
 				
 			else {
-				ItemStack output = (ItemStack) this.handler.getStackInSlot(1);
+				ItemStack output = (ItemStack) this.spinningWheelItemStacks.getStackInSlot(1);
 				if (output.isEmpty()) return true;
 				if (!output.isItemEqual(result)) return false;
 					
@@ -165,37 +206,8 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		}
 	}
 
-	public static int getItemProcessTime(ItemStack fuel) {
-		return 200; //we have no fuel but we want to have a process time
-		
-		// if(fuel.isEmpty()) return 0;
-		// else
-		// {
-		// Item item = fuel.getItem();
-		//
-		// if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-		// {
-		// Block block = Block.getBlockFromItem(item);
-		//
-		// if (block == Blocks.WOODEN_SLAB) return 150;
-		// if (block.getDefaultState().getMaterial() == Material.WOOD) return 300;
-		// if (block == Blocks.COAL_BLOCK) return 16000;
-		// }
-		//
-		// if (item instanceof ItemTool &&
-		// "WOOD".equals(((ItemTool)item).getToolMaterialName())) return 200;
-		// if (item instanceof ItemSword &&
-		// "WOOD".equals(((ItemSword)item).getToolMaterialName())) return 200;
-		// if (item instanceof ItemHoe &&
-		// "WOOD".equals(((ItemHoe)item).getMaterialName())) return 200;
-		// if (item == Items.STICK) return 100;
-		// if (item == Items.COAL) return 1600;
-		// if (item == Items.LAVA_BUCKET) return 20000;
-		// if (item == Item.getItemFromBlock(Blocks.SAPLING)) return 100;
-		// if (item == Items.BLAZE_ROD) return 2400;
-		//
-		// return GameRegistry.getFuelValue(fuel);
-		// }
+	public static int getItemProcessTime(ItemStack item) {
+		return 200; //we have no fuel but we want to have a process time per item
 	}
 
 	public static boolean isItemValid(ItemStack fuel) {
@@ -210,10 +222,6 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 
 	public int getField(int id) {
 		switch (id) {
-//		case 0:
-//			return this.burnTime;
-//		case 0:
-//			return this.currentProcessTime;
 		case 0:
 			return this.processTime;
 		case 1:
@@ -225,12 +233,6 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 
 	public void setField(int id, int value) {
 		switch (id) {
-//		case 0:
-//			this.burnTime = value;
-//			break;
-//		case 0:
-//			this.currentProcessTime = value;
-//			break;
 		case 0:
 			this.processTime = value;
 			break;
