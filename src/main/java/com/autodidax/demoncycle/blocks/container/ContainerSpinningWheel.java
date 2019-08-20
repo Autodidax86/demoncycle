@@ -74,4 +74,74 @@ public class ContainerSpinningWheel extends Container
 	{
 		return this.tileEntity.isUsableByPlayer(playerIn);
 	}
+	
+	@Override
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int slotIndex)
+    {
+		int sizeInventory = 1;
+		
+        ItemStack itemStack1 = ItemStack.EMPTY;
+        Slot slot = inventorySlots.get(slotIndex);
+
+        if (slot != null && slot.getHasStack())
+        {
+            ItemStack itemStack2 = slot.getStack();
+            itemStack1 = itemStack2.copy();
+
+            if (slotIndex == 1) //output
+            {
+                if (!mergeItemStack(itemStack2, 0, 0 + 36, true))
+                {
+                    return ItemStack.EMPTY;
+                }
+
+                slot.onSlotChange(itemStack2, itemStack1);
+            }
+            else if (slotIndex != 0)
+            {
+                // check if there is a compacting recipe for the stack
+                if (SpinningWheelRecipes.getInstance().getSpinningResult(itemStack2) != ItemStack.EMPTY)
+                {
+                    if (!mergeItemStack(itemStack2, 0, 1, false))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else if (slotIndex >= sizeInventory && slotIndex < sizeInventory + 27) // player inventory slots
+                {
+                    if (!mergeItemStack(itemStack2, sizeInventory + 27, sizeInventory + 36, false))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else if (slotIndex >= sizeInventory + 27 && slotIndex < sizeInventory + 36
+                        && !mergeItemStack(itemStack2, sizeInventory + 1, sizeInventory + 28, false)) // hotbar slots
+                {
+                    return ItemStack.EMPTY;
+                }
+            }
+            else if (!mergeItemStack(itemStack2, sizeInventory, sizeInventory + 36, false))
+            {
+                return ItemStack.EMPTY;
+            }
+
+            if (itemStack2.getCount() == 0)
+            {
+                slot.putStack(ItemStack.EMPTY);
+            }
+            else
+            {
+                slot.onSlotChanged();
+            }
+
+            if (itemStack2.getCount() == itemStack1.getCount())
+            {
+                return ItemStack.EMPTY;
+            }
+
+            slot.onTake(playerIn, itemStack2);
+        }
+
+        return itemStack1;
+    }
 }

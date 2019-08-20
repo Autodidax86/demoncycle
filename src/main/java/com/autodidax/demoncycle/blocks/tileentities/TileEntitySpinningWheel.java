@@ -36,7 +36,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	private ItemStack spinning = ItemStack.EMPTY;
 
 	private int processTime; 
-	private int totalProcessTime = 200;
+	private int totalProcessTime;
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
@@ -107,7 +107,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		if(!this.world.isRemote)
 		{
 			ItemStack input = this.spinningWheelItemStacks.getStackInSlot(0);
-			
+			this.totalProcessTime = this.getItemProcessTime(input);
 			if (this.isWorking() || !input.isEmpty())
 			{
 				if (!this.isWorking() && this.canBeProcessed(input))
@@ -210,8 +210,8 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		return 200; //we have no fuel but we want to have a process time per item
 	}
 
-	public static boolean isItemValid(ItemStack fuel) {
-		return SpinningWheelRecipes.getInstance().getSpinningResult(fuel) != ItemStack.EMPTY;
+	public static boolean isItemValid(ItemStack item) {
+		return SpinningWheelRecipes.getInstance().getSpinningResult(item) != ItemStack.EMPTY;
 	}
 
 	public boolean isUsableByPlayer(EntityPlayer player) {
