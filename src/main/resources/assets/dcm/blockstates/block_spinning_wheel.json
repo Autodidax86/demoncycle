@@ -2,7 +2,7 @@
     "forge_marker":1,
     "defaults": {"model":"dcm:spinning_wheel"},
     "variants": {
-        "normal": { "model": "dcm:spinning" },
+        "normal": { "model": "dcm:spinning_wheel" },
         "facing=north,spinning=false": { "model": "dcm:spinning_wheel" },
         "facing=east,spinning=false": { "model": "dcm:spinning_wheel", "y": 90 },
         "facing=south,spinning=false": { "model": "dcm:spinning_wheel", "y": 180 },

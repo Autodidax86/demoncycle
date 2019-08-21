@@ -116,22 +116,22 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
             else if (face == EnumFacing.SOUTH && south.isFullBlock() && !north.isFullBlock()) face = EnumFacing.NORTH;
             else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock()) face = EnumFacing.EAST;
             else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock()) face = EnumFacing.WEST;
-            worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
+            worldIn.setBlockState(pos, state.withProperty(FACING, face).withProperty(SPINNING,  false), 2);
         }
 	}
 	
 	public static void setState(boolean active, World worldIn, BlockPos pos) 
-	{
+	{		
 		IBlockState state = worldIn.getBlockState(pos);
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		
 		if(active) {
 			System.out.println("BlockUpdate: Spinning=true");
-			worldIn.setBlockState(pos, ModBlocks.BLOCK_SPINNING_WHEEL.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(SPINNING, true), 3);
+			worldIn.setBlockState(pos, state.withProperty(SPINNING, true), 3);
 		}
 		else {
 			System.out.println("BlockUpdate: Spinning=false");
-			worldIn.setBlockState(pos, ModBlocks.BLOCK_SPINNING_WHEEL.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(SPINNING, false), 3);
+			worldIn.setBlockState(pos, state.withProperty(SPINNING, false), 3);
 		}
 		
 		if(tileentity != null) 
