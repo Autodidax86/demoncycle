@@ -125,8 +125,14 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 		IBlockState state = worldIn.getBlockState(pos);
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		
-		if(active) worldIn.setBlockState(pos, ModBlocks.BLOCK_SPINNING_WHEEL.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(SPINNING, true), 3);
-		else worldIn.setBlockState(pos, ModBlocks.BLOCK_SPINNING_WHEEL.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(SPINNING, false), 3);
+		if(active) {
+			System.out.println("BlockUpdate: Spinning=true");
+			worldIn.setBlockState(pos, ModBlocks.BLOCK_SPINNING_WHEEL.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(SPINNING, true), 3);
+		}
+		else {
+			System.out.println("BlockUpdate: Spinning=false");
+			worldIn.setBlockState(pos, ModBlocks.BLOCK_SPINNING_WHEEL.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(SPINNING, false), 3);
+		}
 		
 		if(tileentity != null) 
 		{

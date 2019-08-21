@@ -101,35 +101,16 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 
 	public void update()
 	{
-		boolean flag = this.isWorking();
-		boolean flag1 = false;
+		//boolean flag = this.isWorking();
+		//boolean spinning = false;
 		
 		if(!this.world.isRemote)
 		{
 			ItemStack input = this.spinningWheelItemStacks.getStackInSlot(0);
 			this.totalProcessTime = this.getItemProcessTime(input);
-			if (this.isWorking() || !input.isEmpty())
-			{
-				if (!this.isWorking() && this.canBeProcessed(input))
-				{					
-					if(this.isWorking()) {
-						flag1 = true;
-						
-						if(!input.isEmpty()) 
-						{
-							Item item = input.getItem();
-							input.shrink(1);
-							
-							if (input.isEmpty())
-							{
-								ItemStack item1 = item.getContainerItem(input);
-								this.spinningWheelItemStacks.setStackInSlot(1, item1);
-							}
-						}
-					}
-				}
-				
-				if (this.isWorking() && this.canBeProcessed(input)) {
+			if (!input.isEmpty())
+			{				
+				if (this.canBeProcessed(input)) {
 					++this.processTime;
 					
 					if(this.processTime == this.totalProcessTime)
@@ -137,30 +118,28 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 						this.processTime = 0;
 						this.totalProcessTime = this.getItemProcessTime(input);
 						this.processItem(input);
-						flag1 = true;
+						//spinning = true;
+					}
+					else {
+						BlockSpinningWheel.setState(true, this.world, pos);
 					}
 				}
 				else
 				{
 					this.processTime = 0;
+					BlockSpinningWheel.setState(false, this.world, pos);
 				}
 			}
-			else if (!this.isWorking() && this.processTime > 0)
+			else if (this.processTime > 0)
 			{
 				this.processTime = MathHelper.clamp(this.processTime - 2, 0, this.totalProcessTime);
 			}
-			
-			if (flag != this.isWorking())
-			{
-				flag1 = true;
-				BlockSpinningWheel.setState(this.isWorking(), this.world, pos);
+			else {
+				BlockSpinningWheel.setState(false, this.world, pos);
 			}
 		}
 		
-		if (flag1)
-		{
-			this.markDirty();
-		}
+		this.markDirty();
 	}
 	
 	public void processItem(ItemStack input)
