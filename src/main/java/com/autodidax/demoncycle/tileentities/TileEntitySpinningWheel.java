@@ -167,6 +167,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
     {
         if (this.canBeProcessed(input))
         {
+        	int inputAmount = SpinningWheelRecipes.getInstance().getInputAmount(input);
             ItemStack resultItem = SpinningWheelRecipes.getInstance().getSpinningResult(input);
             ItemStack output = this.spinningWheelItemStacks.getStackInSlot(1); //output
 
@@ -179,7 +180,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
             	output.grow(resultItem.getCount());
             }
 
-            input.shrink(1);
+            input.shrink(inputAmount);
         }
     }
 

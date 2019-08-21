@@ -12,6 +12,6 @@ public class ModRecipes {
 		GameRegistry.addSmelting(ModBlocks.ORE_COPPER, new ItemStack(ModItems.INGOT_COPPER, 1), 0.7f);
 		
 		//SpinningWheel
-		SpinningWheelRecipes.getInstance().addSpinningWheelRecipe(new ItemStack(ModItems.FLAX_FIBRE,4), new ItemStack(ModItems.FLAX_WOVEN,1), 0.5f);
+		SpinningWheelRecipes.getInstance().addSpinningWheelRecipe(new ItemStack(ModItems.FLAX_FIBRE, 8), new ItemStack(ModItems.FLAX_WOVEN,1), 0.5f);
 	}	
 }

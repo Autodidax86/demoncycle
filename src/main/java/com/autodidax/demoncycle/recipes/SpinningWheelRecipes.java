@@ -33,11 +33,26 @@ public class SpinningWheelRecipes
 		this.experienceList.put(result, Float.valueOf(experience));
 	}
 	
+	public int getInputAmount(ItemStack input)
+	{
+		for (Entry<ItemStack, ItemStack> entry : this.spinningList.entrySet()) 
+		{
+			if(this.compareItemStacks(input, (ItemStack)entry.getKey())
+					&& input.getCount() >= entry.getKey().getCount()) 
+			{
+				return ((ItemStack)entry.getKey()).getCount();
+			}
+		}
+
+		return 0;
+	}
+	
 	public ItemStack getSpinningResult(ItemStack input) 
 	{
 		for (Entry<ItemStack, ItemStack> entry : this.spinningList.entrySet()) 
 		{
-			if(this.compareItemStacks(input, (ItemStack)entry.getKey())) 
+			if(this.compareItemStacks(input, (ItemStack)entry.getKey())
+					&& input.getCount() >= entry.getKey().getCount()) 
 			{
 				return (ItemStack)entry.getValue();
 			}
@@ -48,7 +63,8 @@ public class SpinningWheelRecipes
 	
 	private boolean compareItemStacks(ItemStack stack1, ItemStack stack2)
 	{
-		return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
+		return stack2.getItem() == stack1.getItem() 
+				&& (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
 	}
 	
 	public Map<ItemStack, ItemStack> getSpinningList() 

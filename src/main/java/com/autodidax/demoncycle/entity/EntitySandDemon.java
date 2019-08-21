@@ -42,11 +42,6 @@ public class EntitySandDemon extends EntityVex {
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
 	}
 	
-//	@Override
-//	protected boolean isValidLightLevel() {
-//		return true;
-//	}
-	
 	@Override
 	protected ResourceLocation getLootTable() {
 		return LootTableHandler.SandDemon;
