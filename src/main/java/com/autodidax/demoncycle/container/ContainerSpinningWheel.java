@@ -46,6 +46,7 @@ public class ContainerSpinningWheel extends Container
 	@Override
 	public void detectAndSendChanges() 
 	{
+		try {
 		super.detectAndSendChanges();
 		
 		for(int i = 0; i < this.listeners.size(); ++i) 
@@ -60,6 +61,10 @@ public class ContainerSpinningWheel extends Container
 		this.currentProcessTime = this.tileEntity.getField(0);
 		this.processTime = this.tileEntity.getField(1);
 		this.totalProcessTime = this.tileEntity.getField(2);
+		}
+		catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 	
 	@Override

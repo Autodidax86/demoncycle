@@ -1,0 +1,51 @@
+{
+    "joints": {
+        // I am unsures as to why the element is bound to an array. But only the first value matters as it is used as a multiplier.
+        "group1": { "0": [1.0] }, // Element 1
+        "group2": { "1": [1.0], "2": [1.0] } // Element 2 and 3
+    },
+    "clips": {
+        "default": {
+            "loop": false, // DO not loop
+            "joint_clips": {}, // No change to the model
+            "events": {} // No events
+        },
+        "moving": {
+            "loop": true, // Loop animation
+            "joint_clips": {
+                "group1": [
+                    {
+                        "variable": "offset_y", // Specifies what transformation that needs to happen.
+                        "type": "uniform", // The only type that exists is uniform, not sure why this is included.
+                        "interpolation": "linear", // Linear is smooth between switches, and nearest is choppy and instant.
+                        "samples": [0, 0.5, 0] // The values applied, based on the life-cycle of the animation. 
+                    }
+                ],
+                "group2": [
+                    {
+                        "variable": "scale",
+                        "type": "uniform",
+                        "interpolation": "nearest", // Scale happens instantly instead of a growing animation.
+                        "samples": [1, 2, 1] // 1 is normal scale and 2 is times two scale.
+                    },
+                    {
+                        "variable": "axis_z", // Provides a multiplier for the angle variable
+                        "type": "uniform",
+                        "interpolation": "nearest", // Applies the changes instantly
+                        "samples": [1, 2, 1] // Since there is no other axis declared their samples are 0, any value is treated as a 1.
+                    },
+                    {
+                        "variable": "angle",
+                        "type": "uniform",
+                        "interpolation": "linear", // Smoothly rotates
+                        "samples": [0, 180, 0]
+                    }
+                ]
+                
+            },
+            "events": {
+                "0.5": "halfway" // Sends an event at halfway through the life-cycle due to the 0.5.
+            } 
+        }
+    }
+}

@@ -32,6 +32,9 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.property.ExtendedBlockState;
+import net.minecraftforge.common.property.IUnlistedProperty;
+import net.minecraftforge.common.property.Properties;
 
 public class BlockSpinningWheel extends BlockContainerBase implements ITileEntityProvider {
 
@@ -41,12 +44,12 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	public static final AxisAlignedBB SPINNING_WHEEL_EAST_AABB = new AxisAlignedBB(0.75D, 0, 0.125D, 0.25D, 1.25D, 1D);
 	
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	public static final PropertyBool SPINNING = PropertyBool.create("spinning");
+	//public static final PropertyBool SPINNING = PropertyBool.create("spinning");
 	
 	public BlockSpinningWheel(String name) {
 		super(name, Material.WOOD);
 		setSoundType(SoundType.WOOD);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(SPINNING, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 
 	@Override
@@ -56,7 +59,7 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	
 	@Override
 	public boolean isFullCube(IBlockState state) {
-		return true;
+		return false;
 	}
 	
 	@Override
@@ -116,7 +119,7 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
             else if (face == EnumFacing.SOUTH && south.isFullBlock() && !north.isFullBlock()) face = EnumFacing.NORTH;
             else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock()) face = EnumFacing.EAST;
             else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock()) face = EnumFacing.WEST;
-            worldIn.setBlockState(pos, state.withProperty(FACING, face).withProperty(SPINNING,  false), 2);
+            worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
         }
 	}
 	
@@ -125,14 +128,14 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 		IBlockState state = worldIn.getBlockState(pos);
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		
-		if(active) {
-			System.out.println("BlockUpdate: Spinning=true");
-			worldIn.setBlockState(pos, state.withProperty(SPINNING, true), 3);
-		}
-		else {
-			System.out.println("BlockUpdate: Spinning=false");
-			worldIn.setBlockState(pos, state.withProperty(SPINNING, false), 3);
-		}
+//		if(active) {
+//			System.out.println("BlockUpdate: Spinning=true");
+//			worldIn.setBlockState(pos, state.withProperty(SPINNING, true), 3);
+//		}
+//		else {
+//			System.out.println("BlockUpdate: Spinning=false");
+//			worldIn.setBlockState(pos, state.withProperty(SPINNING, false), 3);
+//		}
 		
 		if(tileentity != null) 
 		{
@@ -186,7 +189,14 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	@Override
 	protected BlockStateContainer createBlockState() 
 	{
-		return new BlockStateContainer(this, new IProperty[] {SPINNING,FACING});
+		//return new BlockStateContainer(this, new IProperty[] {SPINNING,FACING});
+		return new ExtendedBlockState(this, new IProperty<?>[] { FACING, Properties.StaticProperty }, new IUnlistedProperty<?>[] { Properties.AnimationProperty });
+	}
+	
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		// TODO Auto-generated method stub
+		return state.withProperty(Properties.StaticProperty, true);
 	}
 	
 	@Override

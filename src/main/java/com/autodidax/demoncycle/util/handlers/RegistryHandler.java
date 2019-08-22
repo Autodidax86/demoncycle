@@ -3,13 +3,16 @@ package com.autodidax.demoncycle.util.handlers;
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.init.ModTileEntities;
+import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
 import com.autodidax.demoncycle.util.IHasModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.animation.AnimationTESR;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 

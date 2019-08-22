@@ -1,10 +1,13 @@
 package com.autodidax.demoncycle.tileentities;
 
+import com.autodidax.demoncycle.Main;
 import com.autodidax.demoncycle.block.BlockSpinningWheel;
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.items.ItemBase;
 import com.autodidax.demoncycle.recipes.SpinningWheelRecipes;
+import com.autodidax.demoncycle.util.Reference;
+import com.google.common.collect.ImmutableMap;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,11 +22,16 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.model.animation.CapabilityAnimation;
+import net.minecraftforge.common.model.animation.IAnimationStateMachine;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -34,23 +42,34 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	private ItemStackHandler spinningWheelItemStacks = new ItemStackHandler(2);
 	private String customName;
 	private ItemStack spinning = ItemStack.EMPTY;
-
+	private final IAnimationStateMachine asm;
 	private int processTime; 
 	private int totalProcessTime;
 
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			return true;
-		else
-			return false;
+	public TileEntitySpinningWheel() {
+		if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
+			asm = ModelLoaderRegistry.loadASM(new ResourceLocation(Reference.MOD_ID + ":asms/block/spinning_wheel_animated.json"), ImmutableMap.of());
+		} else asm = null;
+		
+		Main.proxy.registerBlockRenderer();
 	}
-
+	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (capability == CapabilityAnimation.ANIMATION_CAPABILITY) {
+			return CapabilityAnimation.ANIMATION_CAPABILITY.cast(asm);
+		}
+		else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return (T) this.spinningWheelItemStacks;
+		}
+			
 		return super.getCapability(capability, facing);
+	}
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		// TODO Auto-generated method stub
+		return getCapability(capability, facing) != null;
 	}
 
 	public boolean hasCustomName() {
@@ -101,9 +120,6 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 
 	public void update()
 	{
-		//boolean flag = this.isWorking();
-		//boolean spinning = false;
-		
 		if(!this.world.isRemote)
 		{
 			ItemStack input = this.spinningWheelItemStacks.getStackInSlot(0);
@@ -118,7 +134,6 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 						this.processTime = 0;
 						this.totalProcessTime = this.getItemProcessTime(input);
 						this.processItem(input);
-						//spinning = true;
 					}
 					else {
 						BlockSpinningWheel.setState(true, this.world, pos);

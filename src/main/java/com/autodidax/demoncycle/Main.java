@@ -36,6 +36,7 @@ public class Main {
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
 		ModEntities.Init();
 		RenderHandler.registerEntityRenders();
+		Main.proxy.registerBlockRenderer();
 	}
 	
 	@EventHandler
