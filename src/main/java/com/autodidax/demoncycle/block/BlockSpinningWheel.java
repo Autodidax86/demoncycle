@@ -49,7 +49,7 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	public BlockSpinningWheel(String name) {
 		super(name, Material.WOOD);
 		setSoundType(SoundType.WOOD);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		//this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	
 	@Override
 	public boolean isFullCube(IBlockState state) {
-		return false;
+		return true;
 	}
 	
 	@Override
@@ -122,11 +122,11 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
             worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
         }
 	}
-	
-	public static void setState(boolean active, World worldIn, BlockPos pos) 
-	{		
-		IBlockState state = worldIn.getBlockState(pos);
-		TileEntity tileentity = worldIn.getTileEntity(pos);
+
+//	public static void setState(boolean active, World worldIn, BlockPos pos) 
+//	{		
+//		IBlockState state = worldIn.getBlockState(pos);
+//		TileEntity tileentity = worldIn.getTileEntity(pos);
 		
 //		if(active) {
 //			System.out.println("BlockUpdate: Spinning=true");
@@ -137,12 +137,12 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 //			worldIn.setBlockState(pos, state.withProperty(SPINNING, false), 3);
 //		}
 		
-		if(tileentity != null) 
-		{
-			tileentity.validate();
-			worldIn.setTileEntity(pos, tileentity);
-		}
-	}
+//		if(tileentity != null) 
+//		{
+//			tileentity.validate();
+//			worldIn.setTileEntity(pos, tileentity);
+//		}
+//	}
 	
 	@Override
 	public boolean hasTileEntity(IBlockState state) 

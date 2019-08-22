@@ -50,8 +50,6 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
 			asm = ModelLoaderRegistry.loadASM(new ResourceLocation(Reference.MOD_ID + ":asms/block/spinning_wheel_animated.json"), ImmutableMap.of());
 		} else asm = null;
-		
-		Main.proxy.registerBlockRenderer();
 	}
 	
 	@Override
@@ -136,13 +134,13 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 						this.processItem(input);
 					}
 					else {
-						BlockSpinningWheel.setState(true, this.world, pos);
+						//BlockSpinningWheel.setState(true, this.world, pos);
 					}
 				}
 				else
 				{
 					this.processTime = 0;
-					BlockSpinningWheel.setState(false, this.world, pos);
+					//BlockSpinningWheel.setState(false, this.world, pos);
 				}
 			}
 			else if (this.processTime > 0)
@@ -150,7 +148,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 				this.processTime = MathHelper.clamp(this.processTime - 2, 0, this.totalProcessTime);
 			}
 			else {
-				BlockSpinningWheel.setState(false, this.world, pos);
+				//BlockSpinningWheel.setState(false, this.world, pos);
 			}
 		}
 		
