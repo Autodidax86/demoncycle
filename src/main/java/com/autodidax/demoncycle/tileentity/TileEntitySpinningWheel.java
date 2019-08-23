@@ -107,19 +107,11 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		return compound;
 	}
 
-	public boolean isWorking() {
-		return true; //this "furnace" will always work
-	}
-
-	@SideOnly(Side.CLIENT)
-	public static boolean isWorking(TileEntitySpinningWheel te) {
-		return te.getField(0) > 0;
-	}
-
 	private void SwitchAnimationState(String newState) {
 		String currentState = this.asm.currentState();
 		
 		if(!currentState.equalsIgnoreCase(newState)) {
+			System.out.println("Switching states..");
 			this.asm.transition(newState);
 		}
 	}
@@ -156,7 +148,8 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 			}
 			else if (this.processTime > 0)
 			{
-				this.processTime = MathHelper.clamp(this.processTime - 2, 0, this.totalProcessTime);
+				this.processTime = 0;
+				//this.processTime = MathHelper.clamp(this.processTime - 2, 0, this.totalProcessTime);
 			}
 			else {
 				this.SwitchAnimationState("default");
