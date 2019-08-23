@@ -44,12 +44,11 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	public static final AxisAlignedBB SPINNING_WHEEL_EAST_AABB = new AxisAlignedBB(0.75D, 0, 0.125D, 0.25D, 1.25D, 1D);
 	
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	//public static final PropertyBool SPINNING = PropertyBool.create("spinning");
 	
 	public BlockSpinningWheel(String name) {
 		super(name, Material.WOOD);
 		setSoundType(SoundType.WOOD);
-		//this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 
 	@Override
@@ -122,27 +121,6 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
             worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
         }
 	}
-
-//	public static void setState(boolean active, World worldIn, BlockPos pos) 
-//	{		
-//		IBlockState state = worldIn.getBlockState(pos);
-//		TileEntity tileentity = worldIn.getTileEntity(pos);
-		
-//		if(active) {
-//			System.out.println("BlockUpdate: Spinning=true");
-//			worldIn.setBlockState(pos, state.withProperty(SPINNING, true), 3);
-//		}
-//		else {
-//			System.out.println("BlockUpdate: Spinning=false");
-//			worldIn.setBlockState(pos, state.withProperty(SPINNING, false), 3);
-//		}
-		
-//		if(tileentity != null) 
-//		{
-//			tileentity.validate();
-//			worldIn.setTileEntity(pos, tileentity);
-//		}
-//	}
 	
 	@Override
 	public boolean hasTileEntity(IBlockState state) 
@@ -189,14 +167,7 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	@Override
 	protected BlockStateContainer createBlockState() 
 	{
-		//return new BlockStateContainer(this, new IProperty[] {SPINNING,FACING});
-		return new ExtendedBlockState(this, new IProperty<?>[] { FACING, Properties.StaticProperty }, new IUnlistedProperty<?>[] { Properties.AnimationProperty });
-	}
-	
-	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		// TODO Auto-generated method stub
-		return state.withProperty(Properties.StaticProperty, true);
+		return new BlockStateContainer(this, new IProperty[] {FACING});
 	}
 	
 	@Override

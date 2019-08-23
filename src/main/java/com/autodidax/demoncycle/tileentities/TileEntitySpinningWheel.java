@@ -42,22 +42,15 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	private ItemStackHandler spinningWheelItemStacks = new ItemStackHandler(2);
 	private String customName;
 	private ItemStack spinning = ItemStack.EMPTY;
-	private final IAnimationStateMachine asm;
 	private int processTime; 
 	private int totalProcessTime;
 
-	public TileEntitySpinningWheel() {
-		if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
-			asm = ModelLoaderRegistry.loadASM(new ResourceLocation(Reference.MOD_ID + ":asms/block/spinning_wheel_animated.json"), ImmutableMap.of());
-		} else asm = null;
-	}
-	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if (capability == CapabilityAnimation.ANIMATION_CAPABILITY) {
-			return CapabilityAnimation.ANIMATION_CAPABILITY.cast(asm);
-		}
-		else if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+//		if (capability == CapabilityAnimation.ANIMATION_CAPABILITY) {
+//			return CapabilityAnimation.ANIMATION_CAPABILITY.cast(asm);
+//		}
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return (T) this.spinningWheelItemStacks;
 		}
 			
