@@ -20,7 +20,7 @@
                         "variable": "angle", // Specifies what transformation that needs to happen.
                         "type": "uniform", // The only type that exists is uniform, not sure why this is included.
                         "interpolation": "linear", // Linear is smooth between switches, and nearest is choppy and instant.
-                        "samples": [0, 360, 0] // The values applied, based on the life-cycle of the animation. 
+                        "samples": [0, 45, 90, 135, 180, 225, 270, 315, 360] // The values applied, based on the life-cycle of the animation. 
                     }
                 ]
                 
