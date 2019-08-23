@@ -1,8 +1,8 @@
 package com.autodidax.demoncycle.container;
 
 import com.autodidax.demoncycle.container.slot.SlotSpinningWheelItemHandler;
-import com.autodidax.demoncycle.recipes.SpinningWheelRecipes;
-import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
+import com.autodidax.demoncycle.recipe.SpinningWheelRecipes;
+import com.autodidax.demoncycle.tileentity.TileEntitySpinningWheel;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

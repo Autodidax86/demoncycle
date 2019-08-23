@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.items.tools;
+package com.autodidax.demoncycle.item.tool;
 
 import com.autodidax.demoncycle.Main;
 import com.autodidax.demoncycle.init.ModItems;

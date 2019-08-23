@@ -3,17 +3,17 @@ package com.autodidax.demoncycle.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.autodidax.demoncycle.items.ItemBase;
-import com.autodidax.demoncycle.items.ItemSeed;
-import com.autodidax.demoncycle.items.armor.ArmorBase;
-import com.autodidax.demoncycle.items.food.FoodBase;
-import com.autodidax.demoncycle.items.food.FoodEffectBase;
-import com.autodidax.demoncycle.items.tools.Axe;
-import com.autodidax.demoncycle.items.tools.Gouge;
-import com.autodidax.demoncycle.items.tools.Hoe;
-import com.autodidax.demoncycle.items.tools.Pickaxe;
-import com.autodidax.demoncycle.items.tools.Spade;
-import com.autodidax.demoncycle.items.tools.Sword;
+import com.autodidax.demoncycle.item.ItemBase;
+import com.autodidax.demoncycle.item.ItemSeed;
+import com.autodidax.demoncycle.item.armor.ArmorBase;
+import com.autodidax.demoncycle.item.food.FoodBase;
+import com.autodidax.demoncycle.item.food.FoodEffectBase;
+import com.autodidax.demoncycle.item.tool.Axe;
+import com.autodidax.demoncycle.item.tool.Gouge;
+import com.autodidax.demoncycle.item.tool.Hoe;
+import com.autodidax.demoncycle.item.tool.Pickaxe;
+import com.autodidax.demoncycle.item.tool.Spade;
+import com.autodidax.demoncycle.item.tool.Sword;
 import com.autodidax.demoncycle.util.Reference;
 
 import net.minecraft.init.MobEffects;

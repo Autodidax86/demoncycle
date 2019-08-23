@@ -5,7 +5,7 @@ import java.util.Random;
 import com.autodidax.demoncycle.Main;
 import com.autodidax.demoncycle.container.BlockContainerBase;
 import com.autodidax.demoncycle.init.ModBlocks;
-import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
+import com.autodidax.demoncycle.tileentity.TileEntitySpinningWheel;
 import com.autodidax.demoncycle.util.Reference;
 
 import net.minecraft.block.BlockHorizontal;

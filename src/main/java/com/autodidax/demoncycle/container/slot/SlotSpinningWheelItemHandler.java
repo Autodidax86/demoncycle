@@ -1,6 +1,6 @@
 package com.autodidax.demoncycle.container.slot;
 
-import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
+import com.autodidax.demoncycle.tileentity.TileEntitySpinningWheel;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;

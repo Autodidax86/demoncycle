@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.items;
+package com.autodidax.demoncycle.item;
 
 import com.autodidax.demoncycle.Main;
 import com.autodidax.demoncycle.init.ModBlocks;

@@ -1,6 +1,6 @@
-package com.autodidax.demoncycle.items.tools;
+package com.autodidax.demoncycle.item.tool;
 
-import com.autodidax.demoncycle.items.ItemBase;
+import com.autodidax.demoncycle.item.ItemBase;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;

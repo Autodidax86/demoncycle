@@ -1,18 +1,18 @@
-package com.autodidax.demoncycle.items.armor;
+package com.autodidax.demoncycle.item;
 
 import com.autodidax.demoncycle.Main;
 import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.util.IHasModel;
 import com.autodidax.demoncycle.util.Reference;
 
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraftforge.oredict.OreDictionary;
 
-public class ArmorBase extends ItemArmor implements IHasModel {
-
-	public ArmorBase(String name, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) 
+public class ItemBase extends Item implements IHasModel
+{
+	public ItemBase(String name)
 	{
-		super(materialIn, renderIndexIn, equipmentSlotIn);
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(Reference.DemonCycleTab);

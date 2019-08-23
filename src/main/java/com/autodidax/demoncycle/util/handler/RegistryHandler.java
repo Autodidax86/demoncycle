@@ -1,9 +1,9 @@
-package com.autodidax.demoncycle.util.handlers;
+package com.autodidax.demoncycle.util.handler;
 
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.init.ModTileEntities;
-import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
+import com.autodidax.demoncycle.tileentity.TileEntitySpinningWheel;
 import com.autodidax.demoncycle.util.IHasModel;
 
 import net.minecraft.block.Block;

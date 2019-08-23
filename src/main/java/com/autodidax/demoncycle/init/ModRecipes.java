@@ -1,6 +1,6 @@
 package com.autodidax.demoncycle.init;
 
-import com.autodidax.demoncycle.recipes.SpinningWheelRecipes;
+import com.autodidax.demoncycle.recipe.SpinningWheelRecipes;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

@@ -1,6 +1,6 @@
 package com.autodidax.demoncycle.proxy;
 
-import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
+import com.autodidax.demoncycle.tileentity.TileEntitySpinningWheel;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;

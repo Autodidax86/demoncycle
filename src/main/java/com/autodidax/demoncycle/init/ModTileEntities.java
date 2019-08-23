@@ -3,7 +3,7 @@ package com.autodidax.demoncycle.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
+import com.autodidax.demoncycle.tileentity.TileEntitySpinningWheel;
 import com.autodidax.demoncycle.util.Reference;
 
 import net.minecraft.block.Block;

@@ -1,8 +1,8 @@
-package com.autodidax.demoncycle.util.handlers;
+package com.autodidax.demoncycle.util.handler;
 
 import com.autodidax.demoncycle.container.ContainerSpinningWheel;
 import com.autodidax.demoncycle.gui.GuiSpinningWheel;
-import com.autodidax.demoncycle.tileentities.TileEntitySpinningWheel;
+import com.autodidax.demoncycle.tileentity.TileEntitySpinningWheel;
 import com.autodidax.demoncycle.util.Reference;
 
 import net.minecraft.entity.player.EntityPlayer;

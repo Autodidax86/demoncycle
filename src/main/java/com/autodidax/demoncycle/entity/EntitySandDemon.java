@@ -1,6 +1,6 @@
 package com.autodidax.demoncycle.entity;
 
-import com.autodidax.demoncycle.util.handlers.LootTableHandler;
+import com.autodidax.demoncycle.util.handler.LootTableHandler;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;

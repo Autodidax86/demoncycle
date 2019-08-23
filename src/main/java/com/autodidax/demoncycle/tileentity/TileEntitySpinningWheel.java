@@ -1,11 +1,11 @@
-package com.autodidax.demoncycle.tileentities;
+package com.autodidax.demoncycle.tileentity;
 
 import com.autodidax.demoncycle.Main;
 import com.autodidax.demoncycle.block.BlockSpinningWheel;
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.init.ModItems;
-import com.autodidax.demoncycle.items.ItemBase;
-import com.autodidax.demoncycle.recipes.SpinningWheelRecipes;
+import com.autodidax.demoncycle.item.ItemBase;
+import com.autodidax.demoncycle.recipe.SpinningWheelRecipes;
 import com.autodidax.demoncycle.util.Reference;
 import com.google.common.collect.ImmutableMap;
 

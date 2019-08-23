@@ -7,8 +7,8 @@ import com.autodidax.demoncycle.init.ModRecipes;
 import com.autodidax.demoncycle.init.ModTileEntities;
 import com.autodidax.demoncycle.proxy.CommonProxy;
 import com.autodidax.demoncycle.util.Reference;
-import com.autodidax.demoncycle.util.handlers.GuiHandler;
-import com.autodidax.demoncycle.util.handlers.RenderHandler;
+import com.autodidax.demoncycle.util.handler.GuiHandler;
+import com.autodidax.demoncycle.util.handler.RenderHandler;
 import com.autodidax.demoncycle.world.ModWorldGen;
 
 import net.minecraftforge.fml.common.Mod;

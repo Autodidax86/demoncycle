@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.util.handlers;
+package com.autodidax.demoncycle.util.handler;
 
 import com.autodidax.demoncycle.util.Reference;
 

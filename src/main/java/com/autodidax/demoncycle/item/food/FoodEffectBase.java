@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.items.food;
+package com.autodidax.demoncycle.item.food;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
