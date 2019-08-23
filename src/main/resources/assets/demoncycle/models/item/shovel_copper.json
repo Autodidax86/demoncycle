@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "dcm:items/shovel_copper"
+        "layer0": "demoncycle:items/shovel_copper"
     }
 }

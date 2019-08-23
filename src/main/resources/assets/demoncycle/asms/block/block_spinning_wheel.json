@@ -1,0 +1,20 @@
+{
+    "parameters": {
+        "raw_anim_time": [ "+", 0 ], // Percentage of animation time using the add arithmatic operator.
+        "slowed_anim_time": [ "/", 4 ], // Percentage of animation time divided by 4 using the division arithmatic operator.
+        "four": [ "/", "#slowed_anim_time" ] // Just using the division operator with another parameter.
+        // You can also reference parameters passed in from code when the loadASM method is called. ImmutableMap.of(String, ITimeValue);
+    },
+    "clips": {
+        "default": "demoncycle:block/block_spinning_wheel@default", // Just a reference to the clip in the armature file.
+        "moving": [ "apply", "demoncycle:block/block_spinning_wheel@moving", "#slowed_anim_time" ] // Applies the slowed_anim_time to the moving clip in the armature file.
+    },
+    "states": [
+        "default", "moving" // As seen above these are our two states, these must match clip names.
+    ],
+    "transitions": {
+        "default": "moving", // default state will be able to transition to moving
+        "moving": "default" // mocing state will be able to transition to default state
+    },
+    "startstate": "moving" // The ASM will start in the moving state
+}

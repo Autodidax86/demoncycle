@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "dcm:items/pickaxe_copper"
+        "layer0": "demoncycle:items/pickaxe_copper"
     }
 }

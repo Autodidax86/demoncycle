@@ -1,14 +1,18 @@
 {
     "forge_marker":1,
-    "defaults": {"model":"dcm:spinning_wheel"},
+    "defaults": {"model":"demoncycle:block_spinning_wheel"},
     "variants": {
-        "normal": { "model": "dcm:spinning_wheel" },
-        "facing=north": { "model": "dcm:spinning_wheel" },
-        "facing=east": { "model": "dcm:spinning_wheel", "y": 90 },
-        "facing=south": { "model": "dcm:spinning_wheel", "y": 180 },
-        "facing=west": { "model": "dcm:spinning_wheel", "y": 270 },
+        "normal": { "model": "demoncycle:block_spinning_wheel" },
+        "facing=north,static=false": { "model": "demoncycle:block_spinning_wheel" },
+        "facing=east,static=false": { "model": "demoncycle:block_spinning_wheel", "y": 90 },
+        "facing=south,static=false": { "model": "demoncycle:block_spinning_wheel", "y": 180 },
+        "facing=west,static=false": { "model": "demoncycle:block_spinning_wheel", "y": 270 },
+        "facing=north,static=true": { "model": "demoncycle:block_spinning_wheel" },
+        "facing=east,static=true": { "model": "demoncycle:block_spinning_wheel", "y": 90 },
+        "facing=south,static=true": { "model": "demoncycle:block_spinning_wheel", "y": 180 },
+        "facing=west,static=true": { "model": "demoncycle:block_spinning_wheel", "y": 270 },
         "inventory": {
-            "model": "dcm:spinning_wheel"
+            "model": "demoncycle:block_spinning_wheel"
         }
     }
 }

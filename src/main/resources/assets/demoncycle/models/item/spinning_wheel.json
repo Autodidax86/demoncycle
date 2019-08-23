@@ -1,7 +1,7 @@
 {
     "variants": {
         "normal": {
-            "model": "dcm:spinning_wheel"
+            "model": "demoncycle:spinning_wheel"
         }
     }
 }

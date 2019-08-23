@@ -19,5 +19,6 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerBlockRenderer()
 	{
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpinningWheel.class, new AnimationTESR<TileEntitySpinningWheel>());
 	}
 }

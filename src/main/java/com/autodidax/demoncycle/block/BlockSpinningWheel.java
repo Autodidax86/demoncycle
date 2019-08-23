@@ -58,7 +58,7 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	
 	@Override
 	public boolean isFullCube(IBlockState state) {
-		return true;
+		return false;
 	}
 	
 	@Override
@@ -167,7 +167,8 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	@Override
 	protected BlockStateContainer createBlockState() 
 	{
-		return new BlockStateContainer(this, new IProperty[] {FACING});
+		//return new BlockStateContainer(this, new IProperty[] {FACING});
+		return new ExtendedBlockState(this, new IProperty<?>[] {Properties.StaticProperty, FACING}, new IUnlistedProperty<?>[] {Properties.AnimationProperty});
 	}
 	
 	@Override
@@ -182,5 +183,11 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	public int getMetaFromState(IBlockState state) 
 	{
 		return ((EnumFacing)state.getValue(FACING)).getIndex();
+	}
+	
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		// TODO Auto-generated method stub
+		return state.withProperty(Properties.StaticProperty, true);
 	}
 }

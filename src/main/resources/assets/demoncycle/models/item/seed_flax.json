@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "dcm:items/seed_linum"
+        "layer0": "demoncycle:items/seed_linum"
     }
 }

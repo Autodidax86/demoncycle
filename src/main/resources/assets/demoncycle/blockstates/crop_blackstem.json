@@ -7,22 +7,22 @@
 		"age": {
 			"0": {
 				"textures": {
-					"cross": "dcm:blocks/blackstem/blackstem_stage_0"
+					"cross": "demoncycle:blocks/blackstem/blackstem_stage_0"
 				}
 			},
 			"1": {
 				"textures": {
-					"cross": "dcm:blocks/blackstem/blackstem_stage_1"
+					"cross": "demoncycle:blocks/blackstem/blackstem_stage_1"
 				}
 			},
 			"2": {
 				"textures": {
-					"cross": "dcm:blocks/blackstem/blackstem_stage_2"
+					"cross": "demoncycle:blocks/blackstem/blackstem_stage_2"
 				}
 			},
 			"3": {
 				"textures": {
-					"cross": "dcm:blocks/blackstem/blackstem_stage_3"
+					"cross": "demoncycle:blocks/blackstem/blackstem_stage_3"
 				}
 			}
 		}

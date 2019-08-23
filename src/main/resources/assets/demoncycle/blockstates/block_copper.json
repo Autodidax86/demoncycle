@@ -2,7 +2,7 @@
 	"forge_marker": 1,
 	"defaults": {
 		"textures": {
-			"all": "dcm:blocks/block_copper"
+			"all": "demoncycle:blocks/block_copper"
 		}
 	},
 	"variants": {

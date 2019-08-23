@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "dcm:items/blackstem_soup"
+        "layer0": "demoncycle:items/blackstem_soup"
     }
 }

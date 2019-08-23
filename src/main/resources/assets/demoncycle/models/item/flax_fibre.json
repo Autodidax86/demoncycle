@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "dcm:items/flax_fibre"
+        "layer0": "demoncycle:items/flax_fibre"
     }
 }

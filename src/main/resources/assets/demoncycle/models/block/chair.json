@@ -1,7 +1,7 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
     "textures": {
-        "texture_wood": "dcm:blocks/textures/texture_wood"
+        "texture_wood": "demoncycle:blocks/textures/texture_wood"
     },
     "display": {
         "gui": {

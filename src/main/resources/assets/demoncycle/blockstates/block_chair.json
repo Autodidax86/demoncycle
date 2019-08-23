@@ -1,7 +1,7 @@
 {
 	"variants": {
 		"normal": {
-			"model": "dcm:chair"
+			"model": "demoncycle:chair"
 		}
 	}
 }

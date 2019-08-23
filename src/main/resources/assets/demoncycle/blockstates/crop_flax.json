@@ -7,42 +7,42 @@
 		"age": {
 			"0": {
 				"textures": {
-					"cross": "dcm:blocks/flax/flax_stage_0"
+					"cross": "demoncycle:blocks/flax/flax_stage_0"
 				}
 			},
 			"1": {
 				"textures": {
-					"cross": "dcm:blocks/flax/flax_stage_1"
+					"cross": "demoncycle:blocks/flax/flax_stage_1"
 				}
 			},
 			"2": {
 				"textures": {
-					"cross": "dcm:blocks/flax/flax_stage_2"
+					"cross": "demoncycle:blocks/flax/flax_stage_2"
 				}
 			},
 			"3": {
 				"textures": {
-					"cross": "dcm:blocks/flax/flax_stage_3"
+					"cross": "demoncycle:blocks/flax/flax_stage_3"
 				}
 			},
             "4": {
                 "textures": {
-                    "cross": "dcm:blocks/flax/flax_stage_4"
+                    "cross": "demoncycle:blocks/flax/flax_stage_4"
                 }
             },
             "5": {
                 "textures": {
-                    "cross": "dcm:blocks/flax/flax_stage_5"
+                    "cross": "demoncycle:blocks/flax/flax_stage_5"
                 }
             },
             "6": {
                 "textures": {
-                    "cross": "dcm:blocks/flax/flax_stage_6"
+                    "cross": "demoncycle:blocks/flax/flax_stage_6"
                 }
             },
             "7": {
                 "textures": {
-                    "cross": "dcm:blocks/flax/flax_stage_7"
+                    "cross": "demoncycle:blocks/flax/flax_stage_7"
                 }
             }
 		}
