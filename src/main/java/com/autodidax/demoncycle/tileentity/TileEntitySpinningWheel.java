@@ -116,6 +116,14 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		return te.getField(0) > 0;
 	}
 
+	private void SwitchAnimationState(String newState) {
+		String currentState = this.asm.currentState();
+		
+		if(!currentState.equalsIgnoreCase(newState)) {
+			this.asm.transition(newState);
+		}
+	}
+	
 	public void update()
 	{
 		if(!this.world.isRemote)
@@ -130,16 +138,19 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 					if(this.processTime == this.totalProcessTime)
 					{
 						this.processTime = 0;
+						this.SwitchAnimationState("default");
 						this.totalProcessTime = this.getItemProcessTime(input);
 						this.processItem(input);
 					}
 					else {
+						this.SwitchAnimationState("moving");
 						//BlockSpinningWheel.setState(true, this.world, pos);
 					}
 				}
 				else
 				{
 					this.processTime = 0;
+					this.SwitchAnimationState("default");
 					//BlockSpinningWheel.setState(false, this.world, pos);
 				}
 			}
@@ -148,6 +159,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 				this.processTime = MathHelper.clamp(this.processTime - 2, 0, this.totalProcessTime);
 			}
 			else {
+				this.SwitchAnimationState("default");
 				//BlockSpinningWheel.setState(false, this.world, pos);
 			}
 		}
