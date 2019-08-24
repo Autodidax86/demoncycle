@@ -15,7 +15,7 @@ import net.minecraftforge.common.animation.Event;
 import net.minecraftforge.common.model.animation.IAnimationStateMachine;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
-public class ClientProxy extends CommonProxy
+public class ClientProxy implements IProxy
 {
 	@Override
 	public void registerItemRenderer(Item item, int meta, String id) 

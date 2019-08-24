@@ -5,7 +5,7 @@ import com.autodidax.demoncycle.init.ModEntities;
 import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.init.ModRecipes;
 import com.autodidax.demoncycle.init.ModTileEntities;
-import com.autodidax.demoncycle.proxy.CommonProxy;
+import com.autodidax.demoncycle.proxy.IProxy;
 import com.autodidax.demoncycle.util.Reference;
 import com.autodidax.demoncycle.util.handler.GuiHandler;
 import com.autodidax.demoncycle.util.handler.RenderHandler;
@@ -27,8 +27,8 @@ public class Main {
 	@Instance
 	public static Main Instance;
 	
-	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
-	public static CommonProxy proxy;
+	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
+	public static IProxy proxy;
 	
 	@EventHandler
 	public static void PreInit(FMLPreInitializationEvent event)

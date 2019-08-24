@@ -3,7 +3,7 @@ package com.autodidax.demoncycle.proxy;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.model.animation.IAnimationStateMachine;
 
-public class CommonProxy 
+public class ServerProxy implements IProxy
 {
 	public void registerItemRenderer(Item item, int meta, String id){}
 	public void registerBlockRenderer()  {}
