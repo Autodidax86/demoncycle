@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.proxy;
+package com.autodidax.demoncycle.interfaces;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.common.model.animation.IAnimationStateMachine;

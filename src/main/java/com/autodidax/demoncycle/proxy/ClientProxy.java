@@ -1,5 +1,6 @@
 package com.autodidax.demoncycle.proxy;
 
+import com.autodidax.demoncycle.interfaces.IProxy;
 import com.autodidax.demoncycle.tileentity.TileEntitySpinningWheel;
 import com.autodidax.demoncycle.util.Reference;
 import com.autodidax.demoncycle.util.handler.RenderHandler;

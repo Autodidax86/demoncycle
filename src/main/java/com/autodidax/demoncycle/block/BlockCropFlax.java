@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.init.ModItems;
-import com.autodidax.demoncycle.util.IWorldGen;
+import com.autodidax.demoncycle.interfaces.IWorldGen;
 import com.autodidax.demoncycle.util.Reference;
 
 import net.minecraft.block.BlockCrops;

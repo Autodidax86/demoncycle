@@ -3,7 +3,7 @@ package com.autodidax.demoncycle.block;
 import com.autodidax.demoncycle.Main;
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.init.ModItems;
-import com.autodidax.demoncycle.util.IHasModel;
+import com.autodidax.demoncycle.interfaces.IHasModel;
 import com.autodidax.demoncycle.util.Reference;
 
 import net.minecraft.block.Block;

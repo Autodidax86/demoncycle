@@ -1,5 +1,7 @@
 package com.autodidax.demoncycle.proxy;
 
+import com.autodidax.demoncycle.interfaces.IProxy;
+
 import net.minecraft.item.Item;
 import net.minecraftforge.common.model.animation.IAnimationStateMachine;
 

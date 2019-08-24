@@ -1,4 +1,4 @@
-package com.autodidax.demoncycle.util;
+package com.autodidax.demoncycle.interfaces;
 
 import java.util.ArrayList;
 

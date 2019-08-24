@@ -5,11 +5,11 @@ import com.autodidax.demoncycle.init.ModEntities;
 import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.init.ModRecipes;
 import com.autodidax.demoncycle.init.ModTileEntities;
-import com.autodidax.demoncycle.proxy.IProxy;
+import com.autodidax.demoncycle.interfaces.IProxy;
 import com.autodidax.demoncycle.util.Reference;
 import com.autodidax.demoncycle.util.handler.GuiHandler;
 import com.autodidax.demoncycle.util.handler.RenderHandler;
-import com.autodidax.demoncycle.world.ModWorldGen;
+import com.autodidax.demoncycle.world.WorldGenBlocks;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -33,7 +33,7 @@ public class Main {
 	@EventHandler
 	public static void PreInit(FMLPreInitializationEvent event)
 	{
-		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+		GameRegistry.registerWorldGenerator(new WorldGenBlocks(), 3);
 		ModEntities.Init();
 		Main.proxy.registerEntityRenders();
 		Main.proxy.registerBlockRenderer();
