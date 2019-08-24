@@ -3,14 +3,10 @@
     "defaults": {"model":"demoncycle:block_spinning_wheel"},
     "variants": {
         "normal": { "model": "demoncycle:block_spinning_wheel" },
-        "facing=north,static=false": { "model": "demoncycle:block_spinning_wheel" },
-        "facing=east,static=false": { "model": "demoncycle:block_spinning_wheel", "y": 90 },
-        "facing=south,static=false": { "model": "demoncycle:block_spinning_wheel", "y": 180 },
-        "facing=west,static=false": { "model": "demoncycle:block_spinning_wheel", "y": 270 },
-        "facing=north,static=true": { "model": "demoncycle:block_spinning_wheel" },
-        "facing=east,static=true": { "model": "demoncycle:block_spinning_wheel", "y": 90 },
-        "facing=south,static=true": { "model": "demoncycle:block_spinning_wheel", "y": 180 },
-        "facing=west,static=true": { "model": "demoncycle:block_spinning_wheel", "y": 270 },
+        "facing=north": { "model": "demoncycle:block_spinning_wheel" },
+        "facing=east": { "model": "demoncycle:block_spinning_wheel", "y": 90 },
+        "facing=south": { "model": "demoncycle:block_spinning_wheel", "y": 180 },
+        "facing=west": { "model": "demoncycle:block_spinning_wheel", "y": 270 },
         "inventory": {
             "model": "demoncycle:block_spinning_wheel"
         }

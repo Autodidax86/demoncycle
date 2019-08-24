@@ -111,9 +111,9 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		String currentState = this.asm.currentState();
 		
 		if(!currentState.equalsIgnoreCase(newState)) {
-			System.out.println("Switching states..");
+			System.out.println("Switching states.. new state: " + newState);
 			this.asm.transition(newState);
-		}
+		}		
 	}
 	
 	public void update()
@@ -136,24 +136,20 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 					}
 					else {
 						this.SwitchAnimationState("moving");
-						//BlockSpinningWheel.setState(true, this.world, pos);
 					}
 				}
 				else
 				{
 					this.processTime = 0;
 					this.SwitchAnimationState("default");
-					//BlockSpinningWheel.setState(false, this.world, pos);
 				}
 			}
 			else if (this.processTime > 0)
 			{
 				this.processTime = 0;
-				//this.processTime = MathHelper.clamp(this.processTime - 2, 0, this.totalProcessTime);
 			}
 			else {
 				this.SwitchAnimationState("default");
-				//BlockSpinningWheel.setState(false, this.world, pos);
 			}
 		}
 		

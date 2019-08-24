@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.animation.AnimationTESR;
+import net.minecraftforge.common.animation.Event;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
 public class ClientProxy extends CommonProxy
@@ -19,6 +20,12 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerBlockRenderer()
 	{
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpinningWheel.class, new AnimationTESR<TileEntitySpinningWheel>());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpinningWheel.class, new AnimationTESR<TileEntitySpinningWheel>() {
+			@Override
+			public void handleEvents(TileEntitySpinningWheel te, float time, Iterable<Event> pastEvents) {
+				// TODO Auto-generated method stub
+				super.handleEvents(te, time, pastEvents);
+			}
+		});
 	}
 }

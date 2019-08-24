@@ -130,7 +130,6 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		// TODO Auto-generated method stub
 		return new TileEntitySpinningWheel();
 	}
 	
@@ -149,7 +148,7 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) 
 	{
-		return EnumBlockRenderType.MODEL;
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 	
 	@Override
@@ -167,8 +166,7 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	@Override
 	protected BlockStateContainer createBlockState() 
 	{
-		//return new BlockStateContainer(this, new IProperty[] {FACING});
-		return new ExtendedBlockState(this, new IProperty<?>[] {Properties.StaticProperty, FACING}, new IUnlistedProperty<?>[] {Properties.AnimationProperty});
+		return new ExtendedBlockState(this, new IProperty<?>[] {FACING}, new IUnlistedProperty<?>[] {Properties.AnimationProperty});
 	}
 	
 	@Override
@@ -183,11 +181,5 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
 	public int getMetaFromState(IBlockState state) 
 	{
 		return ((EnumFacing)state.getValue(FACING)).getIndex();
-	}
-	
-	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		// TODO Auto-generated method stub
-		return state.withProperty(Properties.StaticProperty, true);
 	}
 }

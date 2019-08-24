@@ -32,7 +32,7 @@
                         "variable": "origin_y",
                         "type": "uniform",
                         "interpolation": "nearest",
-                        "samples": [ 0.859375 ]
+                        "samples": [ 0.86 ]
                       },
                       { 
                         "variable": "origin_z",

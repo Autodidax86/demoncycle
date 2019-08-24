@@ -43,7 +43,7 @@
 		},
 		{
 			"name": "whell_stick_4",
-			"from": [6.5, 9, 7.75],
+			"from": [6.5, 9.5, 7.75],
 			"to": [7, 13.5, 8.25],
 			"faces": {
 				"north": {"uv": [0, 0, 0.5, 2.5], "texture": "#texture_wood"},
@@ -307,7 +307,7 @@
 		{
 			"name": "plate1",
 			"from": [2, 12, 9],
-			"to": [16, 14, 12],
+			"to": [16, 14.3, 12],
 			"faces": {
 				"north": {"uv": [0, 0, 14, 2], "texture": "#texture_wood"},
 				"east": {"uv": [0, 0, 3, 2], "texture": "#texture_wood"},
@@ -320,7 +320,7 @@
 		{
 			"name": "plate1",
 			"from": [2, 12, 4],
-			"to": [16, 14, 7],
+			"to": [16, 14.3, 7],
 			"faces": {
 				"north": {"uv": [0, 0, 14, 2], "texture": "#texture_wood"},
 				"east": {"uv": [0, 0, 3, 2], "texture": "#texture_wood"},
@@ -356,7 +356,7 @@
 		{
 			"name": "filler1",
 			"from": [12, 12, 7],
-			"to": [16, 14, 9],
+			"to": [16, 14.3, 9],
 			"faces": {
 				"east": {"uv": [0, 0, 2, 2], "texture": "#texture_wood"},
 				"west": {"uv": [0, 0, 2, 2], "texture": "#texture_wood"},
