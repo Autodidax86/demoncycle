@@ -1,5 +1,6 @@
 package com.autodidax.demoncycle.util;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 

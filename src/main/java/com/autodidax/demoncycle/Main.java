@@ -10,6 +10,7 @@ import com.autodidax.demoncycle.util.Reference;
 import com.autodidax.demoncycle.util.handler.GuiHandler;
 import com.autodidax.demoncycle.util.handler.RenderHandler;
 import com.autodidax.demoncycle.world.WorldGenBlocks;
+import com.autodidax.demoncycle.world.WorldGenStructures;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -34,6 +35,7 @@ public class Main {
 	public static void PreInit(FMLPreInitializationEvent event)
 	{
 		GameRegistry.registerWorldGenerator(new WorldGenBlocks(), 3);
+		GameRegistry.registerWorldGenerator(new WorldGenStructures(), 0);
 		ModEntities.Init();
 		Main.proxy.registerEntityRenders();
 		Main.proxy.registerBlockRenderer();

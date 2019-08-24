@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.autodidax.demoncycle.Main;
 import com.autodidax.demoncycle.entity.EntitySandDemon;
+import com.autodidax.demoncycle.util.BiomeHelper;
 import com.autodidax.demoncycle.util.Reference;
 
 import net.minecraft.entity.Entity;
@@ -25,7 +26,7 @@ public class ModEntities
 {
 	public static void Init() {
 		registerEntity("sanddemon", EntitySandDemon.class, Reference.EntitySandDemon, EntityCreeper.class, EnumCreatureType.MONSTER, 50, 12696440, 16767021, 
-			SpawnPlacementType.ON_GROUND, getBiomes(BiomeDictionary.Type.SANDY), 100, 10, 20);
+			SpawnPlacementType.ON_GROUND, BiomeHelper.getBiomes(BiomeDictionary.Type.SANDY), 100, 10, 20);
 	}
 	
 	private static void registerEntity(String name, Class<? extends EntityLiving> entity, int id, Class<? extends EntityLiving> classToCopy, EnumCreatureType creatureType,
@@ -34,9 +35,5 @@ public class ModEntities
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MOD_ID + ":" + name), entity, name, id, Main.Instance, 
 				range, 1, true, color1, color2);		
 		EntityRegistry.addSpawn(entity, weight, min, max, creatureType, biomes);
-	}
-	
-	private static Biome[] getBiomes(final BiomeDictionary.Type type) {
-		return BiomeDictionary.getBiomes(type).toArray(new Biome[0]);
 	}
 }
