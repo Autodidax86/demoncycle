@@ -76,7 +76,6 @@ public class BlockSpinningWheel extends BlockContainerBase implements ITileEntit
             default:
                 return SPINNING_WHEEL_SOUTH_AABB;
         }
-
 	}
 	
 	@Override

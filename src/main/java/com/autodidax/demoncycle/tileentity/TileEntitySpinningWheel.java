@@ -47,9 +47,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	private final IAnimationStateMachine asm;
 
 	public TileEntitySpinningWheel() {
-		if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
-			asm = ModelLoaderRegistry.loadASM(new ResourceLocation(Reference.MOD_ID, "asms/block/block_spinning_wheel.json"), ImmutableMap.of());
-		} else asm = null;
+		asm = Main.proxy.loadASM("asms/block/block_spinning_wheel.json");
 	}
 	
 	@Override
