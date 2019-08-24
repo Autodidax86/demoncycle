@@ -41,7 +41,6 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 
 	private ItemStackHandler spinningWheelItemStacks = new ItemStackHandler(2);
 	private String customName;
-	private ItemStack spinning = ItemStack.EMPTY;
 	private int processTime; 
 	private int totalProcessTime;
 	private final IAnimationStateMachine asm;
@@ -105,7 +104,11 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		return compound;
 	}
 
-	private void SwitchAnimationState(String newState) {
+	private void SwitchAnimationState(String newState) {		
+		
+		if(this.asm == null) //server-side
+			return;
+		
 		String currentState = this.asm.currentState();
 		
 		if(!currentState.equalsIgnoreCase(newState)) {
