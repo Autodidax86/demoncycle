@@ -2,8 +2,8 @@
     "joints": {
         // I am unsures as to why the element is bound to an array. But only the first value matters as it is used as a multiplier.
         
-        //elements for the weel: 0 - 16 (17 Elements)
-        "group1": { "0": [1.0], "1": [1.0], "2": [1.0], "3": [1.0], "4": [1.0], "5": [1.0], "6": [1.0], "7": [1.0], "8": [1.0], "9": [1.0], "10": [1.0], "11": [1.0],"12": [1.0],"13": [1.0],"14": [1.0],"15": [1.0],"16": [1.0]} // Element 1
+        //elements for the weel: 0 - 20 (21 Elements)
+        "group1": { "0": [1.0], "1": [1.0], "2": [1.0], "3": [1.0], "4": [1.0], "5": [1.0], "6": [1.0], "7": [1.0], "8": [1.0], "9": [1.0], "10": [1.0], "11": [1.0],"12": [1.0],"13": [1.0],"14": [1.0],"15": [1.0],"16": [1.0],"17": [1.0],"18": [1.0],"19": [1.0],"20": [1.0]}
         //"group2": { "1": [1.0], "2": [1.0] } // Element 2 and 3
     },
     "clips": {
@@ -15,18 +15,40 @@
         "moving": {
             "loop": true, // Loop animation
             "joint_clips": {
-                "group1": [
-                    {
-                        "variable": "angle", // Specifies what transformation that needs to happen.
-                        "type": "uniform", // The only type that exists is uniform, not sure why this is included.
-                        "interpolation": "linear", // Linear is smooth between switches, and nearest is choppy and instant.
-                        "samples": [0, 45, 90, 135, 180, 225, 270, 315, 360] // The values applied, based on the life-cycle of the animation. 
-                    }
+                "group1": [                     
+                      {
+                        "variable": "axis_z",
+                        "type": "uniform",
+                        "interpolation": "nearest",
+                        "samples": [ 1 ]
+                      },
+                      { 
+                        "variable": "origin_x",
+                        "type": "uniform",
+                        "interpolation": "nearest",
+                        "samples": [ 0.421875 ]
+                      },
+                      { 
+                        "variable": "origin_y",
+                        "type": "uniform",
+                        "interpolation": "nearest",
+                        "samples": [ 0.859375 ]
+                      },
+                      { 
+                        "variable": "origin_z",
+                        "type": "uniform",
+                        "interpolation": "nearest",
+                        "samples": [ 0.5 ]
+                      },
+                      {
+                        "variable": "angle",
+                        "type": "uniform",
+                        "interpolation": "linear",
+                        "samples": [0, 120, 240, 0, 120, 240]
+                      }
                 ]
-                
             },
             "events": {
-                "0.5": "halfway" // Sends an event at halfway through the life-cycle due to the 0.5.
             } 
         }
     }

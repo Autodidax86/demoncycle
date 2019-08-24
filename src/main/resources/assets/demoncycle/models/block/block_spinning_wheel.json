@@ -2,12 +2,12 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"texture_wood": "demoncycle:blocks/textures/texture_wood",
-        "texture_wool": "demoncycle:blocks/textures/texture_wool",
-        "texture_steel": "demoncycle:blocks/textures/texture_steel"
+		"texture_wool": "demoncycle:blocks/textures/texture_wool",
+		"texture_steel": "demoncycle:blocks/textures/texture_steel"
 	},
 	"elements": [
 		{
-			"name": "wheel_stick_1",
+			"name": "whell_stick_1",
 			"from": [7, 13.5, 7.75],
 			"to": [11, 14, 8.25],
 			"faces": {
@@ -19,9 +19,10 @@
 			}
 		},
 		{
-			"name": "wheel_stick_2",
+			"name": "whell_stick_2",
 			"from": [2.5, 13.5, 7.75],
 			"to": [6.5, 14, 8.25],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 13.75, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 4, 0.5], "texture": "#texture_wood"},
 				"south": {"uv": [0, 0, 4, 0.5], "texture": "#texture_wood"},
@@ -30,7 +31,7 @@
 			}
 		},
 		{
-			"name": "wheel_stick_3",
+			"name": "whell_stick_3",
 			"from": [6.5, 14, 7.75],
 			"to": [7, 18, 8.25],
 			"faces": {
@@ -41,7 +42,7 @@
 			}
 		},
 		{
-			"name": "wheel_stick_4",
+			"name": "whell_stick_4",
 			"from": [6.5, 9, 7.75],
 			"to": [7, 13.5, 8.25],
 			"faces": {
@@ -53,8 +54,9 @@
 		},
 		{
 			"name": "filler4",
-			"from": [6.5, 13.5, 7.25],
-			"to": [7, 14, 8.75],
+			"from": [6.5, 13.5, 6.75],
+			"to": [7, 14, 9.25],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6.75, 13.75, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 0.5, 0.5], "texture": "#texture_wood"},
 				"east": {"uv": [0, 0, 1.5, 0.5], "texture": "#texture_wood"},
@@ -186,9 +188,36 @@
 			}
 		},
 		{
+			"name": "whool_string_9",
+			"from": [11.6, 11.6, 7.97],
+			"to": [11.65, 15.8, 8.02],
+			"faces": {
+				"north": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"east": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"south": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"west": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"up": {"uv": [0, 0, 0.1, 0.1], "texture": "#texture_wool"},
+				"down": {"uv": [0, 0, 0.1, 0.1], "texture": "#texture_wool"}
+			}
+		},
+		{
 			"name": "whool_string_5",
 			"from": [4.9, 18.85, 7.97],
 			"to": [8.5, 18.9, 8.02],
+			"rotation": {"angle": 45, "axis": "z", "origin": [7, 14, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"east": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"south": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"west": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"up": {"uv": [0, 0, 0.1, 0.1], "texture": "#texture_wool"},
+				"down": {"uv": [0, 0, 0.1, 0.1], "texture": "#texture_wool"}
+			}
+		},
+		{
+			"name": "whool_string_11",
+			"from": [4.85, 9.05, 7.97],
+			"to": [8.55, 9.1, 8.02],
 			"rotation": {"angle": 45, "axis": "z", "origin": [7, 14, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
@@ -226,9 +255,21 @@
 			}
 		},
 		{
+			"name": "whool_string_10",
+			"from": [4.75, 8.95, 7.97],
+			"to": [8.95, 9, 8.02],
+			"faces": {
+				"north": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"east": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"south": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"west": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
+				"up": {"uv": [0, 0, 0.1, 0.1], "texture": "#texture_wool"}
+			}
+		},
+		{
 			"name": "whool_string_8",
 			"from": [5.1, 18.5, 7.97],
-			"to": [6.9, 18.55, 8.02],
+			"to": [9, 18.55, 8.02],
 			"rotation": {"angle": -45, "axis": "z", "origin": [7, 14, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 0.1, 2], "texture": "#texture_wool"},
