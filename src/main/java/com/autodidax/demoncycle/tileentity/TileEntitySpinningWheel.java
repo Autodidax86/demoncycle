@@ -5,6 +5,7 @@ import com.autodidax.demoncycle.block.BlockSpinningWheel;
 import com.autodidax.demoncycle.init.ModBlocks;
 import com.autodidax.demoncycle.init.ModItems;
 import com.autodidax.demoncycle.item.ItemBase;
+import com.autodidax.demoncycle.network.message.PacketUpdateSpinningWheel;
 import com.autodidax.demoncycle.recipe.SpinningWheelRecipes;
 import com.autodidax.demoncycle.util.Reference;
 import com.google.common.collect.ImmutableMap;
@@ -23,6 +24,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -32,6 +35,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.model.animation.CapabilityAnimation;
 import net.minecraftforge.common.model.animation.IAnimationStateMachine;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -39,14 +43,21 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 
-	private ItemStackHandler spinningWheelItemStacks = new ItemStackHandler(2);
+	public ItemStackHandler inventory = new ItemStackHandler(2);
 	private String customName;
 	private int processTime; 
 	private int totalProcessTime;
+	private long lastChangeTime;
+	private String currentState;
 	private final IAnimationStateMachine asm;
 
 	public TileEntitySpinningWheel() {
 		asm = Main.proxy.loadASM("asms/block/block_spinning_wheel.json");
+		
+		if(asm != null)
+		{
+			this.currentState = asm.currentState();
+		}
 	}
 	
 	@Override
@@ -55,7 +66,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 			return CapabilityAnimation.ANIMATION_CAPABILITY.cast(asm);
 		}
 		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			return (T) this.spinningWheelItemStacks;
+			return (T) this.inventory;
 		}
 			
 		return super.getCapability(capability, facing);
@@ -74,6 +85,10 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	public void setCustomName(String customName) {
 		this.customName = customName;
 	}
+	
+	public String getCurrentState() {
+		return this.currentState;
+	}
 
 	@Override
 	public ITextComponent getDisplayName() {
@@ -84,9 +99,11 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.spinningWheelItemStacks.deserializeNBT(compound.getCompoundTag("Inventory"));
+		this.inventory.deserializeNBT(compound.getCompoundTag("Inventory"));
 		this.processTime = compound.getInteger("ProcessTime");
 		this.totalProcessTime = compound.getInteger("ProcessTimeTotal");
+		this.lastChangeTime = compound.getLong("LastChangeTime");
+		this.currentState = compound.getString("CurrentState");
 		
 		if (compound.hasKey("CustomName", 8))
 			this.setCustomName(compound.getString("CustomName"));
@@ -97,31 +114,35 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		super.writeToNBT(compound);
 		compound.setInteger("ProcessTime", (short) this.processTime);
 		compound.setInteger("ProcessTimeTotal", (short) this.totalProcessTime);
-		compound.setTag("Inventory", this.spinningWheelItemStacks.serializeNBT());
+		compound.setLong("LastChangeTime", this.lastChangeTime);
+		compound.setTag("Inventory", this.inventory.serializeNBT());
+		compound.setString("CurrentState", this.currentState);
 
 		if (this.hasCustomName())
 			compound.setString("CustomName", this.customName);
 		return compound;
 	}
 
-	private void SwitchAnimationState(String newState) {		
-		
-		if(this.asm == null) //server-side
-			return;
-		
+	//Kind of callback?
+	public void switchAnimationClient(String newState) {	
 		String currentState = this.asm.currentState();
 		
 		if(!currentState.equalsIgnoreCase(newState)) {
-			System.out.println("Switching states.. new state: " + newState);
 			this.asm.transition(newState);
-		}		
+		}
+	}
+	
+	public void SendClientUpdate(String newState) {
+		this.currentState = newState;
+		Main.network.sendToAllAround(new PacketUpdateSpinningWheel(pos, newState), 
+				new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64));
 	}
 	
 	public void update()
 	{
 		if(!this.world.isRemote)
 		{
-			ItemStack input = this.spinningWheelItemStacks.getStackInSlot(0);
+			ItemStack input = this.inventory.getStackInSlot(0);
 			this.totalProcessTime = this.getItemProcessTime(input);
 			if (!input.isEmpty())
 			{				
@@ -131,18 +152,19 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 					if(this.processTime == this.totalProcessTime)
 					{
 						this.processTime = 0;
-						this.SwitchAnimationState("default");
+						this.SendClientUpdate("default");
+						
 						this.totalProcessTime = this.getItemProcessTime(input);
 						this.processItem(input);
 					}
 					else {
-						this.SwitchAnimationState("moving");
+						this.SendClientUpdate("moving");
 					}
 				}
 				else
 				{
 					this.processTime = 0;
-					this.SwitchAnimationState("default");
+					this.SendClientUpdate("default");
 				}
 			}
 			else if (this.processTime > 0)
@@ -150,7 +172,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 				this.processTime = 0;
 			}
 			else {
-				this.SwitchAnimationState("default");
+				this.SendClientUpdate("default");
 			}
 		}
 		
@@ -163,11 +185,11 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
         {
         	int inputAmount = SpinningWheelRecipes.getInstance().getInputAmount(input);
             ItemStack resultItem = SpinningWheelRecipes.getInstance().getSpinningResult(input);
-            ItemStack output = this.spinningWheelItemStacks.getStackInSlot(1); //output
+            ItemStack output = this.inventory.getStackInSlot(1); //output
 
             if (output.isEmpty())
             {
-                this.spinningWheelItemStacks.setStackInSlot(1, resultItem.copy());
+                this.inventory.setStackInSlot(1, resultItem.copy());
             }
             else if (output.getItem() == resultItem.getItem())
             {
@@ -191,7 +213,7 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 			}
 				
 			else {
-				ItemStack output = (ItemStack) this.spinningWheelItemStacks.getStackInSlot(1);
+				ItemStack output = (ItemStack) this.inventory.getStackInSlot(1);
 				if (output.isEmpty()) return true;
 				if (!output.isItemEqual(result)) return false;
 					
