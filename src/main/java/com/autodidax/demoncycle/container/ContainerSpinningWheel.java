@@ -46,7 +46,6 @@ public class ContainerSpinningWheel extends Container
 	@Override
 	public void detectAndSendChanges() 
 	{
-		try {
 		super.detectAndSendChanges();
 		
 		for(int i = 0; i < this.listeners.size(); ++i) 
@@ -61,10 +60,6 @@ public class ContainerSpinningWheel extends Container
 		this.currentProcessTime = this.tileEntity.getField(0);
 		this.processTime = this.tileEntity.getField(1);
 		this.totalProcessTime = this.tileEntity.getField(2);
-		}
-		catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
 	}
 	
 	@Override
@@ -81,72 +76,50 @@ public class ContainerSpinningWheel extends Container
 	}
 	
 	@Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int slotIndex)
-    {
-		int sizeInventory = 1;
-		
-        ItemStack itemStack1 = ItemStack.EMPTY;
-        Slot slot = inventorySlots.get(slotIndex);
+	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
+	{
+		ItemStack itemstack = ItemStack.EMPTY;
+		Slot slot = inventorySlots.get(par2);
 
-        if (slot != null && slot.getHasStack())
-        {
-            ItemStack itemStack2 = slot.getStack();
-            itemStack1 = itemStack2.copy();
 
-            if (slotIndex == 1) //output
-            {
-                if (!mergeItemStack(itemStack2, 0, 0 + 36, true))
-                {
-                    return ItemStack.EMPTY;
-                }
+		if (slot != null && slot.getHasStack())
+		{
+			ItemStack itemstack1 = slot.getStack();
+			itemstack = itemstack1.copy();
 
-                slot.onSlotChange(itemStack2, itemStack1);
-            }
-            else if (slotIndex != 0)
-            {
-                // check if there is a compacting recipe for the stack
-                if (SpinningWheelRecipes.getInstance().getSpinningResult(itemStack2) != ItemStack.EMPTY)
-                {
-                    if (!mergeItemStack(itemStack2, 0, 1, false))
-                    {
-                        return ItemStack.EMPTY;
-                    }
-                }
-                else if (slotIndex >= sizeInventory && slotIndex < sizeInventory + 27) // player inventory slots
-                {
-                    if (!mergeItemStack(itemStack2, sizeInventory + 27, sizeInventory + 36, false))
-                    {
-                        return ItemStack.EMPTY;
-                    }
-                }
-                else if (slotIndex >= sizeInventory + 27 && slotIndex < sizeInventory + 36
-                        && !mergeItemStack(itemStack2, sizeInventory + 1, sizeInventory + 28, false)) // hotbar slots
-                {
-                    return ItemStack.EMPTY;
-                }
-            }
-            else if (!mergeItemStack(itemStack2, sizeInventory, sizeInventory + 36, false))
-            {
-                return ItemStack.EMPTY;
-            }
+			if (par2 == 1)
+			{
+				if (!mergeItemStack(itemstack1, 2, 38, true))
+					return ItemStack.EMPTY;
 
-            if (itemStack2.getCount() == 0)
-            {
-                slot.putStack(ItemStack.EMPTY);
-            }
-            else
-            {
-                slot.onSlotChanged();
-            }
+				slot.onSlotChange(itemstack1, itemstack);
+			}
+			else if (par2 != 1 && par2 != 0)
+			{
+				if(SpinningWheelRecipes.getInstance().getSpinningResult(itemstack1) != ItemStack.EMPTY) {
+					if (!mergeItemStack(itemstack1, 0, 2, false))
+						return ItemStack.EMPTY;
+				} else if (par2 >= 2 && par2 < 29){
+					if (!mergeItemStack(itemstack1, 29, 38, false))
+						return ItemStack.EMPTY;
+				}
+				else if (par2 >= 29 && par2 < 38 && !mergeItemStack(itemstack1, 2, 29, false))
+					return ItemStack.EMPTY;
+			}
+			else if (!mergeItemStack(itemstack1, 2, 38, false))
+				return ItemStack.EMPTY;
 
-            if (itemStack2.getCount() == itemStack1.getCount())
-            {
-                return ItemStack.EMPTY;
-            }
+			if (itemstack1.isEmpty())
+				slot.putStack(ItemStack.EMPTY);
+			else
+				slot.onSlotChanged();
 
-            slot.onTake(playerIn, itemStack2);
-        }
+			if (itemstack1.getCount() == itemstack.getCount())
+				return ItemStack.EMPTY;
 
-        return itemStack1;
-    }
+			slot.onTake(par1EntityPlayer, itemstack1);
+		}
+
+		return itemstack;
+	}
 }

@@ -19,10 +19,4 @@ public class SlotSpinningWheelItemHandler extends SlotItemHandler {
 	public boolean isItemValid(ItemStack stack) {
 		return TileEntitySpinningWheel.isItemValid(stack);
 	}
-	
-	@Override
-	public int getItemStackLimit(ItemStack stack) {
-		// TODO Auto-generated method stub
-		return super.getItemStackLimit(stack);
-	}
 }

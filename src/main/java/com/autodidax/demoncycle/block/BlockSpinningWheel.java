@@ -35,7 +35,7 @@ import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
 import net.minecraftforge.common.property.Properties;
 
-public class BlockSpinningWheel extends BlockTileBase implements ITileEntityProvider {
+public class BlockSpinningWheel extends BlockContainerBase implements ITileEntityProvider {
 
 	public static final AxisAlignedBB SPINNING_WHEEL_NORTH_AABB = new AxisAlignedBB(1D, 0, 0.75D, 0.125D, 1.25D, 0.25D);
 	public static final AxisAlignedBB SPINNING_WHEEL_WEST_AABB = new AxisAlignedBB(0.25D, 0, 0, 0.75D, 1.25D, 0.875D);

@@ -32,6 +32,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.model.animation.CapabilityAnimation;
 import net.minecraftforge.common.model.animation.IAnimationStateMachine;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -41,9 +42,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntitySpinningWheel extends TileEntity implements ITickable {
+public class TileEntitySpinningWheel extends TileEntity implements ITickable, ICapabilityProvider {
 
-	public ItemStackHandler inventory = new ItemStackHandler(2);
+	public ItemStackHandler inventory;
 	private String customName;
 	private int processTime; 
 	private int totalProcessTime;
@@ -58,6 +59,8 @@ public class TileEntitySpinningWheel extends TileEntity implements ITickable {
 		{
 			this.currentState = asm.currentState();
 		}
+		
+		this.inventory = new ItemStackHandler(2);
 	}
 	
 	@Override

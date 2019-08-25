@@ -16,21 +16,21 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class BlockTileBase extends BlockBase implements IHasModel, ITileEntityProvider {
+public abstract class BlockContainerBase extends BlockContainer implements IHasModel {
 
 	protected String name;
 	
-	protected BlockTileBase(String name, Material material) {
-		super(name, material);
+	protected BlockContainerBase(String name, Material material) {
+		super(material);
+		this.name = name;
 		
-		this.hasTileEntity = true;
-	}
-	
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(Reference.DemonCycleTab);
+		
+		ModBlocks.BLOCKS.add(this);
+		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+		}
 	
 	@Override
 	public void registerModels() 
